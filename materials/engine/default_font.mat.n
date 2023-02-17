@@ -1,0 +1,16 @@
+node.ascii
+; this node file has been auto-generated!
+object material {
+	array object passes {
+		{
+			string shaderProgram default 
+			array string blendMode {
+				src_alpha 
+				one_minus_src_alpha 
+			}
+			object shaderParameters {
+				string diffuseMap materials/engine/default.png 
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+node.utf8
+object material
+{
+    string previewTexture materials/world/test/psurface.gif
+	array object passes
+	{
+		{
+		    array string blendMode { src_alpha one }
+			string shaderProgram base_lighting
+			object shaderParameters
+			{
+				string diffuseMap materials/world/test/psurface.gif
+			}
+		}
+	}
+}

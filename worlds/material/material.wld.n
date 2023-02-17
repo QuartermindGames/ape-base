@@ -1,0 +1,36 @@
+node.utf8
+object world
+{
+    int version 2
+    array object sectors
+    {
+        {
+            string id "main"
+            object boundsMin
+            {
+                float x -1024
+                float y -1024
+                float z -1024
+            }
+            object boundsMax
+            {
+                float x 1024
+                float y 1024
+                float z 1024
+            }
+            array object actors
+            {
+                {
+                    string id "point.sg.prop"
+                    string modelPath "models/editor/sphere.node_c"
+                    object position
+                    {
+                        float x 35.0
+                        float y 0.0
+                        float z 0.0
+                    }
+                }
+            }
+        }
+    }
+}

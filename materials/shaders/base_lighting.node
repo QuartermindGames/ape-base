@@ -1,0 +1,17 @@
+node.utf8
+object program {
+	string description base_lighting 
+	string vertexPath materials/shaders/gl3/vertex.vert.glsl
+	string fragmentPath materials/shaders/gl3/lit.frag.glsl
+	;string fragmentPath materials/shaders/gl3/lighting_only.frag.glsl
+
+    object defaultPass
+    {
+        int cullMode 1
+        object shaderParameters
+        {
+            string normalMap materials/shaders/textures/normal.tga
+            string specularMap materials/shaders/textures/black.png
+        }
+    }
+}

@@ -1,0 +1,11 @@
+node.ascii
+object program {
+	string description toon_outline
+	string vertexPath materials/shaders/gl3/toon_outline.vert.glsl
+	string fragmentPath materials/shaders/gl3/colour.frag.glsl
+
+	object defaultPass
+	{
+	    int cullMode 2
+	}
+}

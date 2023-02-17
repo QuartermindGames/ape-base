@@ -1,0 +1,17 @@
+node.utf8
+object material {
+	array object passes {
+        {
+            string textureFilterMode nearest
+			string shaderProgram default
+            array string blendMode {
+                src_alpha
+                one_minus_src_alpha
+            }
+			bool depthTest true 
+			object shaderParameters {
+				string diffuseMap materials/ui/pie/icon_eye.png
+			}
+		}
+	}
+}

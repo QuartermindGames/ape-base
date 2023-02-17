@@ -1,0 +1,13 @@
+node.utf8
+object material {
+	array object passes {
+        {
+            string textureFilterMode nearest
+			string shaderProgram default_alpha
+			bool depthTest true 
+			object shaderParameters {
+				string diffuseMap materials/ui/pie/icon_placeholder.png
+			}
+		}
+	}
+}

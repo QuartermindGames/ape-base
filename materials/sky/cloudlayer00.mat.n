@@ -1,0 +1,17 @@
+node.ascii
+; this node file has been auto-generated!
+object material {
+	array object passes {
+				{
+			string shaderProgram default 
+			array string blendMode {
+				src_alpha 
+				one 
+			}
+			bool depthTest true 
+			object shaderParameters {
+				string diffuseMap materials/sky/cloudlayer00a.tga 
+			}
+		}
+	}
+}

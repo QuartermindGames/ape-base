@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+    array object passes
+    {
+        {
+            int cullMode 0
+            string shaderProgram default
+            object shaderParameters
+			{
+				string diffuseMap _rt_gui
+			}
+        }
+    }
+}

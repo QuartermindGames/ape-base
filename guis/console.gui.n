@@ -1,0 +1,6 @@
+node.utf8
+object guiPanel
+{
+    array int size { -1 -1 }
+    array int position { 0 0 }
+}
