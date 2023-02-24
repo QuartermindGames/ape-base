@@ -1,16 +1,16 @@
 node.utf8
-object entityTemplate
+object entityPrefab
 {
-    string id "point_camera"
+    string name "point_camera"
     string description ""
 
     array object components
     {
         {
-            string id "camera"
+            string name "camera"
         }
         {
-            string id "transform"
+            string name "transform"
             object properties
             {
                 array float translation { 0 0 0 }
