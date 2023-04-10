@@ -2,7 +2,7 @@
  * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
  */
 
-#include "materials/shaders/gl3/shared.inc.glsl"
+#include "shared.inc.glsl"
 
 void main() {
 	gl_Position = pl_proj * pl_view * pl_model * vec4(pl_vposition, 1.0);

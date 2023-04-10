@@ -2,9 +2,9 @@
  * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
  */
 
-#include "materials/shaders/gl3/shared.inc.glsl"
-#include "materials/shaders/gl3/lighting.inc.glsl"
-#include "materials/shaders/gl3/fog.inc.glsl"
+#include "shared.inc.glsl"
+#include "lighting.inc.glsl"
+#include "fog.inc.glsl"
 
 #define ALPHATEST
 

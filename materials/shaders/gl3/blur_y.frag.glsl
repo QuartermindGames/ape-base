@@ -2,8 +2,8 @@
  * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
  */
 
-#include "materials/shaders/gl3/shared.inc.glsl"
-#include "materials/shaders/gl3/blur.inc.glsl"
+#include "shared.inc.glsl"
+#include "blur.inc.glsl"
 
 void main() {
     vec2 pixelSize = vec2( 2.0 / viewportSize.x, 2.0 / viewportSize.y );

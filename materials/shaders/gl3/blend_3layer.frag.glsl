@@ -9,9 +9,9 @@ uniform sampler2D uBlendGNormal;
 uniform sampler2D uBlendB;
 uniform sampler2D uBlendBNormal;
 
-#include "materials/shaders/gl3/shared.inc.glsl"
-#include "materials/shaders/gl3/lighting.inc.glsl"
-#include "materials/shaders/gl3/fog.inc.glsl"
+#include "shared.inc.glsl"
+#include "lighting.inc.glsl"
+#include "fog.inc.glsl"
 
 vec4 BlendTextures(sampler2D t0, sampler2D t1, sampler2D t2) {
     vec4 sampleA = texture2D(t0, vsShared.uv.st);

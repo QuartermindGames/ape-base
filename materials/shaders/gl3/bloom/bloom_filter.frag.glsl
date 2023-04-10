@@ -1,6 +1,6 @@
 /* Copyright © 2020-2022 Mark E Sowden <hogsy@oldtimes-software.com> */
 
-#include "materials/shaders/gl3/shared.inc.glsl"
+#include "../shared.inc.glsl"
 
 uniform float threshold = 0.64;
 
