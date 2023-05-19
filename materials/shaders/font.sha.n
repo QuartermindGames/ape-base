@@ -1,0 +1,12 @@
+node.utf8
+object program
+{
+    string description "font"
+    string vertexPath "materials/shaders/gl3/vertex.vert.glsl"
+    string fragmentPath "materials/shaders/gl3/font.frag.glsl"
+
+    object defaultPass
+    {
+        int cullMode 1
+    }
+}
