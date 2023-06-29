@@ -8,5 +8,10 @@ object program {
     object defaultPass
     {
         int cullMode 1
+        object shaderParameters
+        {
+            string normalMap materials/shaders/textures/normal.tga
+            string specularMap materials/shaders/textures/black.png
+        }
     }
 }
