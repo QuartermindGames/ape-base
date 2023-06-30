@@ -1,0 +1,47 @@
+node.utf8
+; this file was originally created for matgen, but could be used as a reference for determining surface types
+; but yeah, 'surfaceType' will basically (or *should*) refer to an index here.
+;   description             -> the name of the surface type
+;   string array aliases    -> this is what matgen uses to determine what textures should use it
+array object surfaces
+{
+    {
+        string description "none"
+    }
+    {
+        string description "rock"
+        array string aliases { "rck_" "rch_" }
+    }
+    {
+        string description "metal"
+        array string aliases { "mtl_" "steel_" }
+    }
+    {
+        string description "flesh"
+        array string aliases { "fle_" "flesh_" }
+    }
+    {
+        string description "water"
+        array string aliases { "wtr_" }
+    }
+    {
+        string description "lava"
+        array string aliases { "lva_" }
+    }
+    {
+        string description "solid"
+        array string aliases { "pls_" "sld_" "cem_" }
+    }
+    {
+        string description "glass"
+        array string aliases { "gls_" "sgl_" }
+    }
+    {
+        string description "sand"
+        array string aliases { "snd_" }
+    }
+    {
+        string description "ice"
+        array string aliases { "ice_" }
+    }
+}
