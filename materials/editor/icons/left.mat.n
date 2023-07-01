@@ -3,7 +3,7 @@ node.utf8
 object material {
 	array object passes {
 				{
-			string shaderProgram default 
+			string shaderProgram default_alpha 
 			object shaderParameters {
 				string diffuseMap materials/editor/icons/left.gif 
 			}
