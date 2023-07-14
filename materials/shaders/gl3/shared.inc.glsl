@@ -14,7 +14,7 @@ in
 #endif
 VertexData
 {
-    vec3 view;
+    vec3 viewPos;
     vec3 position;
     vec3 normal;
     vec2 uv;

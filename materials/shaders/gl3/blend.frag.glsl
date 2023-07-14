@@ -23,7 +23,7 @@ void main() {
     vec3 n = normalize(texture2D(normalMap, vsShared.uv.st).rgb * 2.0 - 1.0);
     n = normalize(vsShared.tbn * n);
 
-    vec4 lightTerm = CalculateLighting(n);
+    vec4 lightTerm = CalculateLighting(n, normalize(vsShared.viewPos - vsShared.position));
     vec4 outp = CalculateFogTerm( lightTerm * dsample );
     pl_frag = outp;
 }

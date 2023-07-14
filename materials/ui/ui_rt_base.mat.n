@@ -4,7 +4,7 @@ object material
     array object passes
     {
         {
-            int cullMode 0
+            int cullMode 2
             string shaderProgram default
             object shaderParameters
 			{

@@ -10,8 +10,8 @@ object program {
         int cullMode 1
         object shaderParameters
         {
-            string normalMap materials/shaders/textures/normal.tga
-            string specularMap materials/shaders/textures/black.png
+            string normalMap    materials/debug/color_test_normal.dds
+            string specularMap  materials/debug/color_test_spc.dds
         }
     }
 }

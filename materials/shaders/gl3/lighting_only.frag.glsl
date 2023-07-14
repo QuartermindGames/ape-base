@@ -7,7 +7,7 @@
 
 void main() {
     vec3 n = normalize(vsShared.normal);
-    vec4 lightTerm = CalculateLighting(n);
+    vec4 lightTerm = CalculateLighting(n, normalize(vsShared.viewPos - vsShared.position));
 
     pl_frag = lightTerm;
 }
