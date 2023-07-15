@@ -83,11 +83,8 @@ vec4 CalculateLighting(vec3 n, vec3 viewDir)
         float d = length(lights[i].position - vsShared.position);
         float r = clamp(1.0 - d * d / (lights[i].radius * lights[i].radius), 0.0, 1.0);
 
-        o += ((lterm(n, lp) + sterm(lp, vsShared.viewPos, s, /*material.specularPower*/ 16.0, n)) * (vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a)) * r;
-
-        //o += (lterm(n, lp) * (vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a)) / (lights[i].radius - d);
-        //o += sterm(lp, viewDir, s, 16.0, n) *
-        //(vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a) * r;
+        o += (lterm(n, lp) * (vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a)) * r;
+        o += (sterm(lp, viewDir, s, 16.0, n) * (vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a)) * r;
     }
 
     return sun.ambience + o;
