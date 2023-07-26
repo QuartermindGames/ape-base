@@ -7,6 +7,8 @@
 
 const float PI = 3.14159265359;
 
+#define MAX_LIGHTS 8
+
 #if PLG_COMPILE_VERTEX == 1
 out
 #elif PLG_COMPILE_FRAGMENT == 1

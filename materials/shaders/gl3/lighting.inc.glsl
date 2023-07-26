@@ -2,6 +2,8 @@
  * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
  */
 
+#include "shared.inc.glsl"
+
 struct Material
 {
     float specularPower;
@@ -22,7 +24,7 @@ struct Light
     float radius;
     vec3 position;
 };
-uniform Light lights[8];
+uniform Light lights[MAX_LIGHTS];
 uniform uint numLights = 0U;
 
 //#define CELL_SHADED
@@ -53,12 +55,14 @@ float lterm(vec3 n, vec3 l)
     #ifdef CELL_SHADED
 
     float i = dot(n, l);
-    if (i > 0.0)
-    {
-        return i;
-    }
 
-    return 0.0;
+    float o = 0.0;
+    if (i > 0.75) { o += (i / 2); }
+    if (i > 0.50) { o += (i / 2); }
+    if (i > 0.25) { o += (i / 2); }
+
+    return o;
+
     #else
 
     return max(dot(n, l), 0.0);

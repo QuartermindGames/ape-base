@@ -9,7 +9,7 @@ vec3 ExtractCameraPos(mat4 modelView) {
 }
 
 void main() {
-    gl_Position = pl_proj * pl_view * pl_model * vec4(pl_vposition, 1.0);
+    gl_Position = (pl_proj * pl_view * pl_model) * vec4(pl_vposition, 1.0);
 
     vsShared.position = vec3(pl_model * vec4(pl_vposition, 1.0));
     vsShared.viewPos = ExtractCameraPos(pl_view * pl_model);
