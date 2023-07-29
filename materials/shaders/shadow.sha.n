@@ -1,0 +1,12 @@
+node.utf8
+object program
+{
+    string description  "shadow"
+    string vertexPath   "materials/shaders/gl3/shadow.vert.glsl"
+    string fragmentPath "materials/shaders/gl3/colour.frag.glsl"
+
+    object defaultPass
+    {
+        int cullMode 1
+    }
+}
