@@ -7,6 +7,6 @@ object program
 
     object defaultPass
     {
-        int cullMode 1
+        int cullMode 0
     }
 }

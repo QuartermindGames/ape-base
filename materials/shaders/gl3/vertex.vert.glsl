@@ -1,6 +1,4 @@
-/**
- * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
- */
+// Copyright © 2020-2023 OldTimes Software, Mark E Sowden <hogsy@oldtimes-software.com>
 
 #include "shared.inc.glsl"
 
