@@ -1,7 +1,7 @@
 node.utf8
 object material
 {
-    bool skipStencilShadowVolumePass true
+    bool enableShadows false
 	array object passes
 	{
 		{

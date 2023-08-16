@@ -1,6 +1,4 @@
-/**
- * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
- */
+// Copyright © 2020-2023 OldTimes Software, Mark E Sowden <hogsy@oldtimes-software.com>
 
 #include "shared.inc.glsl"
 
@@ -24,10 +22,7 @@ struct Light
     float radius;
     vec3 position;
 };
-uniform Light lights[MAX_LIGHTS];
-uniform uint numLights = 0U;
-
-//#define CELL_SHADED
+uniform Light light;
 
 vec4 sterm(vec3 lDir, vec3 viewDir, vec3 specColour, float specPower, vec3 normal)
 {
@@ -80,16 +75,11 @@ vec4 CalculateLighting(vec3 n, vec3 viewDir)
     o += vec4(sun.colour.rgb, 1.0) * (lterm(n, lp) * sun.colour.a);
     o += sterm(lp, viewDir, s * (sun.colour.rgb * sun.colour.w) * 2.0, 8.0, n);
 
-    // Now iterate over each of the light sources we have
-    for (uint i = 0U; i < numLights; ++i)
-    {
-        lp = normalize(lights[i].position - vsShared.position);
-        float d = length(lights[i].position - vsShared.position);
-        float r = clamp(1.0 - d * d / (lights[i].radius * lights[i].radius), 0.0, 1.0);
-
-        o += (lterm(n, lp) * (vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a)) * r;
-        o += (sterm(lp, viewDir, s, 16.0, n) * (vec4(lights[i].colour.rgb, 1.0) * lights[i].colour.a)) * r;
-    }
+    lp = normalize(light.position - vsShared.position);
+    float d = length(light.position - vsShared.position);
+    float r = clamp(1.0 - d * d / (light.radius * light.radius), 0.0, 1.0);
+    o += (lterm(n, lp) * (vec4(light.colour.rgb, 1.0) * light.colour.a)) * r;
+    o += (sterm(lp, viewDir, s, 16.0, n) * (vec4(light.colour.rgb, 1.0) * light.colour.a)) * r;
 
     return sun.ambience + o;
 }
