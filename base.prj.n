@@ -1,0 +1,40 @@
+node.utf8
+object project
+{
+    string name         "APE Base"
+    string developer    "OldTimes Software"
+    string website      "https://oldtimes-software.com"
+    array int version   { 0 0 0 }
+
+    array string mounts
+    {
+        "dev" "ship"
+    }
+
+    object cook
+    {
+        ; here is a list of properties for the cooking tool
+        ; each of these arrays come in pairs - first is the source and then followed by destination
+
+        array string worlds
+        {
+            ; explicit list of worlds, all dependencies will automatically be carried over
+            "dev/worlds/example.wld.n"  "ship/worlds/example.wld.n"
+        }
+
+        array string materials
+        {
+            ; explicit list of materials
+        }
+
+        array object sounds
+        {
+            {
+                string source       "dev/sounds/physics"
+                string destination  "ship/sounds/physics"
+                bool isDir          true
+                bool recursive      true
+            }
+        }
+    }
+}
