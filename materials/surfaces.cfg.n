@@ -44,4 +44,12 @@ array object surfaces
         string description "ice"
         array string aliases { "ice_" }
     }
+    {
+        string description "wood"
+        array string aliases { "wd_" }
+    }
+    {
+        string description "grass"
+        array string aliases { "grs_" }
+    }
 }
