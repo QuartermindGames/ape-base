@@ -6,8 +6,6 @@
 #include "lighting.inc.glsl"
 #include "fog.inc.glsl"
 
-#define ALPHATEST
-
 void main() {
 	vec4 diffuse = texture(diffuseMap, vsShared.uv.st);
 
