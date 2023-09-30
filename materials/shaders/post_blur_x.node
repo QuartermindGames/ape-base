@@ -9,7 +9,7 @@ object program
     {
         object shaderParameters
         {
-            string diffuseMap _rt
+            string diffuseMap _rt_default
             string viewportSize _vpsize
         }
     }
