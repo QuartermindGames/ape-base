@@ -20,6 +20,7 @@ object program
 	    array string fragment
 	    {
 	        "CELL_SHADED"
+	        "LIGHTING"
 	    }
 	    array string vertex
 	    {

@@ -1,7 +1,7 @@
 node.utf8
 object program
 {
-	string description base_lighting_alpha
+	string description base_ambience
 	string vertexPath materials/shaders/gl3/vertex.vert.glsl
 	string fragmentPath materials/shaders/gl3/lit.frag.glsl
 
@@ -15,12 +15,8 @@ object program
         }
     }
 
-    object definitions
+    object defaultPass
     {
-        array string fragment
-        {
-            "ALPHATEST"
-            "LIGHTING"
-        }
+        int cullMode 1
     }
 }
