@@ -2,8 +2,8 @@ node.utf8
 object program
 {
 	string description post_bloom_filter
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/bloom/bloom_filter.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/bloom/bloom_filter.frag.glsl
 
 	object defaultPass
     {

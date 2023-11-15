@@ -2,8 +2,8 @@ node.utf8
 object program
 {
 	string description post_blur_x
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/blur_x.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/blur_x.frag.glsl
 
 	object defaultPass
     {

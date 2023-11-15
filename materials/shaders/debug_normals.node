@@ -1,8 +1,8 @@
 node.utf8
 object program {
 	string description debug_normals
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/normals.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/normals.frag.glsl
 
     object defaultPass
     {

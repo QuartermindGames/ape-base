@@ -2,8 +2,8 @@ node.utf8
 object program
 {
 	string description post_fxaa
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/fxaa.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/fxaa.frag.glsl
 
 	object defaultPass
     {

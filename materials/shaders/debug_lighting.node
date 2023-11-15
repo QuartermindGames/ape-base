@@ -2,8 +2,8 @@ node.ascii
 ; this node file has been auto-generated!
 object program {
 	string description debug_lighting 
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/lighting_only.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/lighting_only.frag.glsl
 
     object defaultPass
     {

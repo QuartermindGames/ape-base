@@ -2,8 +2,8 @@ node.utf8
 object program
 {
     string description  "shadow"
-    string vertexPath   "materials/shaders/gl3/shadow.vert.glsl"
-    string fragmentPath "materials/shaders/gl3/colour.frag.glsl"
+    string vertexPath   "materials/shaders/glsl/shadow.vert.glsl"
+    string fragmentPath "materials/shaders/glsl/colour.frag.glsl"
 
     object defaultPass
     {

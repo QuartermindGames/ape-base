@@ -2,8 +2,8 @@ node.ascii
 ; this node file has been auto-generated!
 object program {
 	string description default 
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/texture.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/texture.frag.glsl
 
     object defaultPass
     {

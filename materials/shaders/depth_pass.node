@@ -2,6 +2,6 @@ node.ascii
 ; this node file has been auto-generated!
 object program {
 	string description depth_pass 
-	string vertexPath materials/shaders/gl3/vertex.vert.glsl
-	string fragmentPath materials/shaders/gl3/empty.frag.glsl
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/empty.frag.glsl
 }
