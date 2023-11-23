@@ -6,6 +6,8 @@ object project
     string website      "https://oldtimes-software.com"
     array int version   { 0 0 0 }
 
+    bool visibleInEditor false
+
     array string mounts
     {
         "dev" "ship"
