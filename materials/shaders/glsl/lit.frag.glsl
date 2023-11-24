@@ -8,21 +8,22 @@
 
 void main()
 {
-    vec4 diffuse = texture(diffuseMap, vsShared.uv.st);
+    vec2 uv = vsShared.uv.st + textureOffset;
+    vec4 diffuse = texture(diffuseMap, uv);
 
-#ifdef ALPHATEST
+    #ifdef ALPHATEST
     if (diffuse.a < 0.1)
-        discard;
-#endif
+    discard;
+    #endif
 
-    vec3 n = normalize(texture(normalMap, vsShared.uv.st).rgb * 2.0 - 1.0);
+    vec3 n = normalize(texture(normalMap, uv).rgb * 2.0 - 1.0);
     n = normalize(vsShared.tbn * n);
 
-#ifdef LIGHTING
+    #ifdef LIGHTING
     vec4 lightTerm = CalculateLighting(n, normalize(vsShared.viewPos - vsShared.position));
-#else
+    #else
     vec4 lightTerm = sun.ambience;
-#endif
+    #endif
     vec4 outp = CalculateFogTerm(lightTerm * diffuse);
 
     pl_frag = outp;

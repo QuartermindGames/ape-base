@@ -21,8 +21,8 @@ vec4 colour;
 mat3 tbn;
 } vsShared;
 
-uniform vec2 uTextureScale;
-uniform vec2 uTextureOffset;
+uniform vec2 textureScale;
+uniform vec2 textureOffset;
 
 uniform sampler2D diffuseMap;
 uniform sampler2D normalMap;
