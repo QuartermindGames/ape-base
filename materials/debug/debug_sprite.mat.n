@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+		    array string blendMode { src_alpha one }
+			string shaderProgram default
+			object shaderParameters
+			{
+				string diffuseMap materials/debug/debug.png
+			}
+		}
+	}
+}
