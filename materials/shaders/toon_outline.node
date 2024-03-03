@@ -1,4 +1,4 @@
-node.ascii
+node.utf8
 object program {
 	string description toon_outline
 	string vertexPath materials/shaders/glsl/toon_outline.vert.glsl
