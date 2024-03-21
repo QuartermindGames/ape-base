@@ -6,8 +6,8 @@
 
 void main()
 {
-    pl_frag = vec4( vsShared.colour.r,
-                    vsShared.colour.g,
-                    vsShared.colour.b,
-                    texture(diffuseMap, vsShared.uv).r );
+	pl_frag = vec4( vsShared.colour.r,
+	                vsShared.colour.g,
+	                vsShared.colour.b,
+	                texture( diffuseMap, vsShared.uv ).r );
 }

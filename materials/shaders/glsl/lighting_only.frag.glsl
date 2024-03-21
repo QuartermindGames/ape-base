@@ -5,9 +5,10 @@
 #include "shared.inc.glsl"
 #include "lighting.inc.glsl"
 
-void main() {
-    vec3 n = normalize(vsShared.normal);
-    vec4 lightTerm = CalculateLighting(n, normalize(vsShared.viewPos - vsShared.position));
+void main()
+{
+	vec3 n = normalize( vsShared.normal );
+	vec4 lightTerm = CalculateLighting( n, normalize( vsShared.viewPos - vsShared.position ) );
 
-    pl_frag = lightTerm;
+	pl_frag = lightTerm;
 }

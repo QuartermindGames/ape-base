@@ -4,6 +4,7 @@
 
 #include "shared.inc.glsl"
 
-void main() {
-    pl_frag = vsShared.colour;
+void main()
+{
+	pl_frag = vsShared.colour;
 }

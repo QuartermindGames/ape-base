@@ -4,6 +4,7 @@
 
 #include "shared.inc.glsl"
 
-void main() {
-    pl_frag = vec4(normalize(vsShared.normal), 1.0);
+void main()
+{
+	pl_frag = vec4( normalize( vsShared.normal ), 1.0 );
 }

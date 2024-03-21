@@ -4,11 +4,13 @@
 
 #include "shared.inc.glsl"
 
-void main() {
-    vec4 samp = texture(diffuseMap, vsShared.uv);
-    if (samp.a < 0.1) {
-        discard;
-    }
+void main()
+{
+	vec4 samp = texture( diffuseMap, vsShared.uv );
+	if ( samp.a < 0.1 )
+	{
+		discard;
+	}
 
-    pl_frag = vsShared.colour * samp;
+	pl_frag = vsShared.colour * samp;
 }

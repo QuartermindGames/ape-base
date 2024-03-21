@@ -6,13 +6,14 @@
 
 uniform float exposure = 1.0;
 
-vec4 reinhard_tonemap(vec3 hdr) {
+vec4 reinhard_tonemap( vec3 hdr )
+{
 	// reinhard tone mapping
-	vec3 mapped = hdr / (hdr + vec3(1.0));
+	vec3 mapped = hdr / ( hdr + vec3( 1.0 ) );
 
 	// gamma correction
 	const float gamma = 2.2;
-	mapped = pow(mapped, vec3(1.0 / gamma));
+	mapped = pow( mapped, vec3( 1.0 / gamma ) );
 
-	return vec4(mapped, 1.0);
+	return vec4( mapped, 1.0 );
 }

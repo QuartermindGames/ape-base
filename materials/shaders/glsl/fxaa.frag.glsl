@@ -5,6 +5,7 @@
 #include "shared.inc.glsl"
 #include "fxaa.inc.glsl"
 
-void main() {
-    pl_frag = applyFXAA(gl_FragCoord.xy, diffuseMap);
+void main()
+{
+	pl_frag = applyFXAA( gl_FragCoord.xy, diffuseMap );
 }

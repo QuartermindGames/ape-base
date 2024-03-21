@@ -7,4 +7,4 @@
 uniform vec2 viewportSize;
 
 // Technically , this isn ’t quite a ’ gaussian ’ distribution ...
-const float weights[NUM_WEIGHTS] = float[](0.12, 0.22, 0.32, 0.22, 0.12);
+const float weights[ NUM_WEIGHTS ] = float[]( 0.12, 0.22, 0.32, 0.22, 0.12 );
