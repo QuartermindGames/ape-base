@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+        {
+			string shaderProgram default
+            array string blendMode { src_alpha one }
+			object shaderParameters
+			{
+				string diffuseMap materials/effects/effect_flare_sheet.png
+			}
+		}
+	}
+}

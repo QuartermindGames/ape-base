@@ -1,5 +1,18 @@
-material
-pass default
-blend src_alpha one_minus_src_alpha
-var texture diffuseMap materials/ui/fonts/default_tall.png
-end
+node.utf8
+object material
+{
+	array object passes
+	{
+        {
+			string shaderProgram default
+			array string blendMode {
+				src_alpha
+				one_minus_src_alpha
+			}
+			bool depthTest true
+			object shaderParameters {
+				string diffuseMap materials/ui/fonts/default_tall.png
+			}
+		}
+	}
+}

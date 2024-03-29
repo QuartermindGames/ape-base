@@ -1,0 +1,19 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+		    array float textureScroll { 0.005 0.005 }
+		    string textureFilterMode nearest
+
+		    int cullMode 0
+
+			string shaderProgram base_ambience
+			object shaderParameters
+			{
+				string diffuseMap materials/editor/red_grid.png
+			}
+		}
+	}
+}
