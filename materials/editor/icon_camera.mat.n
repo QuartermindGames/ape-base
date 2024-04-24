@@ -5,7 +5,7 @@ object material
 	{
         {
             string textureFilterMode nearest
-			string shaderProgram default_alpha
+			string shaderProgram sprite
 			bool depthTest true
 			object shaderParameters
 			{
