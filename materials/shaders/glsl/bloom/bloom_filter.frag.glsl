@@ -2,11 +2,12 @@
 
 #include "../shared.inc.glsl"
 
-uniform float threshold = 0.64;
+uniform float threshold = 0.0;
+uniform float intensity = 0.0;
 
 void main()
 {
 	vec4 colour = texture( diffuseMap, vsShared.uv );
-	float b = dot( colour.rgb, vec3( 0.2126, 0.7152, 0.0722 ) ) * threshold;
-	pl_frag = colour * b;
+	float b = dot( colour.rgb, vec3( threshold ) );
+	pl_frag = ( ( colour * b ) - dot( colour.rgb, vec3( 0.05 ) ) ) * intensity;
 }

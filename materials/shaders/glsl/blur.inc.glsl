@@ -1,10 +1,7 @@
-/**
- * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
- */
-
-#define NUM_WEIGHTS 5
+// Copyright © 2020-2024 SnortySoft, Mark E. Sowden <hogsy@snortysoft.net>
 
 uniform vec2 viewportSize = vec2( 640.0, 480.0 );
 
-// Technically , this isn ’t quite a ’ gaussian ’ distribution ...
-const float weights[ NUM_WEIGHTS ] = float[]( 0.12, 0.22, 0.32, 0.22, 0.12 );
+#define NUM_WEIGHTS 3
+const float offsets[ NUM_WEIGHTS ] = float[]( 0.0, 1.3846153846, 3.2307692308 );
+const float weights[ NUM_WEIGHTS ] = float[]( 0.2270270270, 0.3162162162, 0.0702702703 );
