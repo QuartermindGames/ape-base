@@ -2,12 +2,6 @@
 
 #include "shared.inc.glsl"
 
-struct Material
-{
-	float specularPower;
-};
-uniform Material material;
-
 struct Sun
 {
 	vec4 colour;

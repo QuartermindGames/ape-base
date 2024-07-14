@@ -16,6 +16,7 @@ in
 	vec3 viewPos;
 	vec3 position;
 	vec3 normal;
+	vec2 reflect;
 	vec2 uv;
 	vec4 colour;
 	mat3 tbn;
@@ -28,5 +29,15 @@ uniform vec2 textureOffset;
 uniform sampler2D diffuseMap;
 uniform sampler2D normalMap;
 uniform sampler2D specularMap;
+uniform sampler2D sphereMap;
+
+#if PLG_COMPILE_VERTEX == 1
+
+vec3 extract_camera_pos( mat4 modelView )
+{
+	return vec3( -vec3( modelView[ 3 ] ) * mat3( modelView ) );
+}
+
+#endif
 
 #endif// _SHARED_INC_GLSL

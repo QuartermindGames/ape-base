@@ -4,7 +4,7 @@
 
 #include "shared.inc.glsl"
 
-uniform float uThickness = 0.45;
+uniform float uThickness = 0.15;
 
 void main()
 {
