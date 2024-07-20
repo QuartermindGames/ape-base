@@ -2,22 +2,6 @@
 
 #include "shared.inc.glsl"
 
-struct Sun
-{
-	vec4 colour;
-	vec3 position;
-	vec4 ambience;
-};
-uniform Sun sun;
-
-struct Light
-{
-	vec4 colour;
-	float radius;
-	vec3 position;
-};
-uniform Light light;
-
 vec4 sterm( vec3 lDir, vec3 viewDir, vec3 specColour, float specPower, vec3 normal )
 {
 #ifdef CELL_SHADED

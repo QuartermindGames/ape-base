@@ -23,6 +23,22 @@ in
 }
 vsShared;
 
+struct Sun
+{
+	vec4 colour;
+	vec3 position;
+	vec4 ambience;
+};
+uniform Sun sun;
+
+struct Light
+{
+	vec4 colour;
+	float radius;
+	vec3 position;
+};
+uniform Light light;
+
 uniform vec2 textureScale;
 uniform vec2 textureOffset;
 

@@ -2,16 +2,38 @@
 
 #include "shared.inc.glsl"
 
-uniform float extrude = 0.45;
-uniform vec3 lightPosition;
+// if enabled, do extrusion in vertex shader
+//#define OPT_EXTRUDE
 
 void main()
 {
-	mat4 MVP = pl_proj * pl_view * pl_model;
+    vsShared.position = vec3(pl_model * vec4(pl_vposition, 1.0));
+    vsShared.normal = normalize(vec3(pl_model * vec4(pl_vnormal, 0.0)));
+    vsShared.colour = pl_vcolour;
 
-	vsShared.position = vec3( pl_model * vec4( pl_vposition, 1.0 ) );
-	vsShared.normal = normalize( vec3( pl_model * vec4( pl_vnormal, 0.0 ) ) );
-	vsShared.colour = pl_vcolour;
+    #ifdef OPT_EXTRUDE
 
-	gl_Position = MVP * vec4( pl_vposition, 1.0 );
+    vec3 dir = normalize(vsShared.position - light.position);
+    float d = dot(vsShared.normal, dir);
+
+    float extrude;
+    if (d > 0)
+    {
+        vsShared.colour = vec4(1);
+        extrude = 10000.0;
+    }
+    else
+    {
+        vsShared.colour = vec4(1);
+        extrude = 0.0;
+    }
+
+    vec3 newPos = pl_vposition + (dir * extrude);
+    gl_Position = pl_proj * pl_view * pl_model * vec4(newPos, 1.0);
+
+    #else
+
+    gl_Position = (pl_proj * pl_view * pl_model) * vec4(pl_vposition, 1.0);
+
+    #endif
 }
