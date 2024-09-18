@@ -11,36 +11,33 @@ out
 #elif PLG_COMPILE_FRAGMENT == 1
 in
 #endif
-        VertexData
+VertexData
 {
-	vec3 viewPos;
-	vec3 position;
-	vec3 normal;
-	vec2 reflect;
-	vec2 uv;
-	vec4 colour;
-	mat3 tbn;
+    vec3 viewPos;
+    vec3 position;
+    vec3 normal;
+    vec2 reflect;
+    vec2 uv;
+    vec4 colour;
+    mat3 tbn;
 }
 vsShared;
 
 struct Sun
 {
-	vec4 colour;
-	vec3 position;
-	vec4 ambience;
+    vec4 colour;
+    vec3 position;
+    vec4 ambience;
 };
 uniform Sun sun;
 
 struct Light
 {
-	vec4 colour;
-	float radius;
-	vec3 position;
+    vec4 colour;
+    float radius;
+    vec3 position;
 };
 uniform Light light;
-
-uniform vec2 textureScale;
-uniform vec2 textureOffset;
 
 uniform sampler2D diffuseMap;
 uniform sampler2D normalMap;
@@ -49,9 +46,9 @@ uniform sampler2D sphereMap;
 
 #if PLG_COMPILE_VERTEX == 1
 
-vec3 extract_camera_pos( mat4 modelView )
+vec3 extract_camera_pos(mat4 modelView)
 {
-	return vec3( -vec3( modelView[ 3 ] ) * mat3( modelView ) );
+    return vec3(-vec3(modelView[3]) * mat3(modelView));
 }
 
 #endif
