@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020-2021 Mark E Sowden <hogsy@oldtimes-software.com>
+ * Copyright © 2020-2024 Quartermind Games, Mark E. Sowden <hogsy@snortysoft.net>
  */
 
 #include "shared.inc.glsl"

@@ -1,7 +1,7 @@
 node.utf8
 object program {
-	string description toon_outline
-	string vertexPath materials/shaders/glsl/toon_outline.vert.glsl
+	string description  toon_outline
+	string vertexPath   materials/shaders/glsl/toon_outline.vert.glsl
 	string fragmentPath materials/shaders/glsl/colour.frag.glsl
 
 	object defaultPass
