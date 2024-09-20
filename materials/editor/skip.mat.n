@@ -1,0 +1,16 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+		   	 int cullMode 0
+
+			string shaderProgram base_ambience
+			object shaderParameters
+			{
+				string diffuseMap materials/editor/skip.png
+			}
+		}
+	}
+}
