@@ -4,12 +4,10 @@ object material
 	array object passes
 	{
 		{
-			string shaderProgram base_lighting
+			string shaderProgram debug_lighting
 			object shaderParameters
 			{
-				string diffuseMap materials/editor/default.png
-				string normalMap materials/editor/default_n.png
-				string specularMap materials/editor/default_s.png
+				string diffuseMap materials/editor/default_256.png
 			}
 		}
 	}

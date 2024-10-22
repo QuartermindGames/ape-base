@@ -2,8 +2,8 @@ node.utf8
 object project
 {
     string name         "APE Base"
-    string developer    "OldTimes Software"
-    string website      "https://oldtimes-software.com"
+    string developer    "Quartermind Games"
+    string website      "https://quartermind.com/"
     array int version   { 0 0 0 }
 
     bool visibleInEditor false

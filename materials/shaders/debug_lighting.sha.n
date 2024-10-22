@@ -1,8 +1,8 @@
 node.utf8
-; this node file has been auto-generated!
-object program {
-	string description debug_lighting 
-	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+object program
+{
+	string description  debug_lighting
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
 	string fragmentPath materials/shaders/glsl/lighting_only.frag.glsl
 
     object defaultPass
@@ -10,8 +10,9 @@ object program {
         int cullMode 1
         object shaderParameters
         {
-            string normalMap    materials/debug/color_test_normal.dds
-            string specularMap  materials/debug/color_test_spc.dds
+            string diffuseMap   materials/shaders/textures/white.png
+            string normalMap    materials/shaders/textures/normal.tga
+            string specularMap  materials/detail/metal.tga
         }
     }
 }
