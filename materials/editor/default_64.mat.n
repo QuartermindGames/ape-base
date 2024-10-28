@@ -1,0 +1,14 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+			string shaderProgram debug_lighting
+			object shaderParameters
+			{
+				string diffuseMap materials/editor/default_64.png
+			}
+		}
+	}
+}
