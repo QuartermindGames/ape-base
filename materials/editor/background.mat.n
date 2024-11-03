@@ -1,0 +1,17 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+		    array float textureScale    { 0.2 0.2 }
+		    array float textureScroll   { 0.1 0.1 }
+
+			string shaderProgram default
+			object shaderParameters
+			{
+				string diffuseMap materials/editor/default.png
+			}
+		}
+	}
+}

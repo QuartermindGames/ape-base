@@ -7,8 +7,19 @@
 
 void main()
 {
-	vec3 n = normalize( vsShared.normal );
-	vec4 lightTerm = CalculateLighting( n, normalize( vsShared.viewPos - vsShared.position ) );
+    vec4 diffuse = texture(diffuseMap, vsShared.uv);
+    #ifdef ALPHATEST
+    if (diffuse.a < 0.1)
+    {
+        discard;
+    }
+    #endif
 
-	pl_frag = lightTerm;
+    vec3 n = normalize(texture(normalMap, vsShared.uv).rgb * 2.0 - 1.0);
+    n = normalize(vsShared.tbn * n);
+    //n = normalize( vsShared.normal );
+
+    vec4 lightTerm = CalculateLighting(n, normalize(vsShared.viewPos - vsShared.position));
+
+    pl_frag = diffuse * lightTerm;
 }
