@@ -1,0 +1,7 @@
+node.utf8
+object program
+{
+	string description  editor_selection
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/editor/selection.frag.glsl
+}
