@@ -15,4 +15,13 @@ object program
             string specularMap  materials/detail/metal.tga
         }
     }
+
+    object definitions
+    {
+        array string fragment
+        {
+            "LIGHTING"
+            "SUN"
+        }
+    }
 }

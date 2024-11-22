@@ -4,7 +4,7 @@ object material
 	array object passes
 	{
 		{
-			string shaderProgram debug_lighting
+			string shaderProgram base_lighting
 			object shaderParameters
 			{
 				string diffuseMap materials/editor/default_256.png

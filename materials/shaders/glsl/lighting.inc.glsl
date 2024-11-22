@@ -62,7 +62,7 @@ vec4 CalculateLighting(vec3 n, vec3 viewDir)
 	lp = normalize(-sun.position);
 	o += vec4(sun.colour.rgb, 1.0) * (lterm(n, lp) * sun.colour.a);
 	#ifdef SPECULAR
-	o += sterm(lp, viewDir, specular * (sun.colour.rgb * sun.colour.w) * 2.0, 8.0, n);
+	o += sterm(lp, viewDir, specular * sun.colour.w * 2.0, 8.0, n);
 	#endif
 	#endif
 
