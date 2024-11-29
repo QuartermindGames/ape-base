@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+		    array string blendMode { src_alpha one }
+			string shaderProgram base_lighting
+			object shaderParameters
+			{
+				string diffuseMap materials/world/demo/demo_qm_logo.png
+			}
+		}
+	}
+}
