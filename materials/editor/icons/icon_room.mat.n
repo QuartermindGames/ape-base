@@ -9,7 +9,7 @@ object material
 			bool depthTest true
 			object shaderParameters
 			{
-				string diffuseMap materials/editor/icon_entity.png
+				string diffuseMap materials/editor/icons/icon_room.png
 			}
 		}
 	}
