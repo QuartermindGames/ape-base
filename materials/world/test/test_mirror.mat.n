@@ -4,14 +4,6 @@ object material
     string previewTexture materials/world/test/psurface.gif
 	array object passes
 	{
-		{
-		    array string blendMode { one one }
-			string shaderProgram base_lighting
-			object shaderParameters
-			{
-				string diffuseMap materials/world/test/psurface.gif
-			}
-		}
 	}
 
 	bool mirror true

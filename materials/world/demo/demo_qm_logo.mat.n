@@ -5,7 +5,7 @@ object material
 	{
 		{
 		    array string blendMode { src_alpha one }
-			string shaderProgram base_lighting
+			string shaderProgram default
 			object shaderParameters
 			{
 				string diffuseMap materials/world/demo/demo_qm_logo.png

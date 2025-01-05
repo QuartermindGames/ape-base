@@ -9,4 +9,9 @@ object program {
     {
         int cullMode 1
     }
+
+    object baseLightingPass
+    {
+        string dummy dummy
+    }
 }

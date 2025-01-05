@@ -9,7 +9,7 @@ object material
 
 		    int cullMode 0
 
-			string shaderProgram base_ambience
+			string shaderProgram default
 			object shaderParameters
 			{
 				string diffuseMap materials/editor/red_grid.png
