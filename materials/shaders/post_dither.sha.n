@@ -1,0 +1,16 @@
+node.utf8
+object program
+{
+	string description post_dither
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/dither.frag.glsl
+
+	object defaultPass
+    {
+        object shaderParameters
+        {
+            string diffuseMap _rt
+            string viewportSize _vpsize
+        }
+    }
+}
