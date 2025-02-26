@@ -10,8 +10,8 @@ uniform sampler2D blendMap;
 
 vec4 BlendTextures( sampler2D t0, sampler2D t1 )
 {
-	vec4 sampleA = texture2D( t0, vsShared.uv.st );
-	vec4 sampleB = texture2D( t1, vsShared.uv.st );
+	vec4 sampleA = texture( t0, vsShared.uv.st );
+	vec4 sampleB = texture( t1, vsShared.uv.st );
 	return sampleA * ( 1 - vsShared.colour.g ) + sampleB * vsShared.colour.g;
 }
 
@@ -23,7 +23,7 @@ void main()
 		discard;
 	}
 
-	vec3 n = normalize( texture2D( normalMap, vsShared.uv.st ).rgb * 2.0 - 1.0 );
+	vec3 n = normalize( texture( normalMap, vsShared.uv.st ).rgb * 2.0 - 1.0 );
 	n = normalize( vsShared.tbn * n );
 
 	vec4 lightTerm = CalculateLighting( n, normalize( vsShared.viewPos - vsShared.position ) );

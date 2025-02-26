@@ -4,40 +4,29 @@
 
 // based on the implementation outlined here:
 //	http://devlog-martinsh.blogspot.com/2011/03/glsl-8x8-bayer-matrix-dithering.html
+// and then further revised based on ompuco's work here:
+//	https://gist.github.com/ompuco/3209f1b32213cec5b7bccf0e67caf3e9
 
-float scale = 1.0;
+// not really accurate but makes the effect more obvious
+float scale = 0.5;
 
 float find_closest(int x, int y, float c0)
 {
-	int dither[8][8] = {
-	{ 0, 32, 8, 40, 2, 34, 10, 42 }, /* 8x8 Bayer ordered dithering */
-	{ 48, 16, 56, 24, 50, 18, 58, 26 }, /* pattern. Each input pixel */
-	{ 12, 44, 4, 36, 14, 46, 6, 38 }, /* is scaled to the 0..63 range */
-	{ 60, 28, 52, 20, 62, 30, 54, 22 }, /* before looking in this table */
-	{ 3, 35, 11, 43, 1, 33, 9, 41 }, /* to determine the action. */
-	{ 51, 19, 59, 27, 49, 17, 57, 25 },
-	{ 15, 47, 7, 39, 13, 45, 5, 37 },
-	{ 63, 31, 55, 23, 61, 29, 53, 21 } };
+	int dither[4][4] = { { 0, 8, 2, 10 }, { 12, 4, 14, 6 }, { 3, 11, 1, 9 }, { 15, 7, 13, 5 } };
+	float limit = c0 * 255.0;
+	limit += dither[x % 4][y % 4] / 2.0 - 4.0;
+	limit = max(limit, 0.);
+	limit = mix(int(limit) & 0xf8, 0xf8, step(0xf8, limit));
+	limit /= 255;
 
-	float limit = 0.0;
-	if (x < 8)
-	{
-		limit = (dither[x][y]+1)/64.0;
-	}
-
-	if (c0 < limit)
-	{
-		return 0.0;
-	}
-
-	return 1.0;
+	return limit;
 }
 
 void main()
 {
 	vec2 xy = gl_FragCoord.xy * scale;
-	int x = int(mod(xy.x, 8));
-	int y = int(mod(xy.y, 8));
+	int x = int(mod(xy.x, 4));
+	int y = int(mod(xy.y, 4));
 
 	vec3 rgb = texture(diffuseMap, vsShared.uv).rgb;
 	rgb.r = find_closest(x, y, rgb.r);
