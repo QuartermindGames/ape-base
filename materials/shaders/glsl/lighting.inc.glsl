@@ -48,32 +48,46 @@ float lterm(vec3 n, vec3 l)
 	#endif
 }
 
-vec4 CalculateLighting(vec3 n, vec3 viewDir)
+vec4 lighting_term(vec3 n, vec3 viewDir)
 {
 	#ifdef SPECULAR
 	float specular = texture(specularMap, vsShared.uv.st).r;
 	#endif
 
-	vec3 lp;
-	vec4 o;
+	vec3 dir;
+	vec4 result = vec4(0.0, 0.0, 0.0, 0.0);
 
 	#ifdef SUN
 	// Apply the sun term first
-	lp = normalize(-sun.position);
-	o += vec4(sun.colour.rgb, 1.0) * (lterm(n, lp) * sun.colour.a);
+	dir = normalize(-sun.position);
+	result += vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a);
 	#ifdef SPECULAR
-	o += sterm(lp, viewDir, specular * sun.colour.w * 2.0, 8.0, n);
+	result += sterm(dir, viewDir, specular * sun.colour.w * 2.0, 8.0, n);
 	#endif
 	#endif
 
-	// "normal" light point term
-	lp = normalize(light.position - vsShared.position);
+	dir = normalize(light.position - vsShared.position);
 	float d = length(light.position - vsShared.position);
 	float r = clamp(1.0 - d * d / (light.radius * light.radius), 0.0, 1.0);
-	o += (lterm(n, lp) * (vec4(light.colour.rgb, 1.0) * light.colour.a)) * r;
-	#ifdef SPECULAR
-	o += (sterm(lp, viewDir, specular, 16.0, n) * (vec4(light.colour.rgb, 1.0) * light.colour.a)) * r;
-	#endif
+	if (light.cutOff != 0.0)
+	{
+		float theta = dot(dir, -light.direction);
+		if (theta > light.cutOff)
+		{
+			result += (lterm(n, dir) * vec4(light.colour.rgb, 1.0) * light.colour.a) * (1.0 - (1.0 - theta) * 1.0/(1.0 - light.cutOff)) * r;
+			#ifdef SPECULAR
+			result += (sterm(dir, viewDir, specular, 16.0, n) * (vec4(light.colour.rgb, 1.0)*light.colour.a)) * (1.0 - (1.0 - theta) * 1.0/(1.0 - light.cutOff)) * r;
+			#endif
+		}
+	}
+	else
+	{
+		// "normal" light point term
+		result += (lterm(n, dir) * (vec4(light.colour.rgb, 1.0) * light.colour.a)) * r;
+		#ifdef SPECULAR
+		result += (sterm(dir, viewDir, specular, 16.0, n) * (vec4(light.colour.rgb, 1.0) * light.colour.a)) * r;
+		#endif
+	}
 
-	return sun.ambience + o;
+	return max(result, sun.ambience);
 }

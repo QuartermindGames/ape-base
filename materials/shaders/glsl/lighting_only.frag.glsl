@@ -19,7 +19,7 @@ void main()
     n = normalize(vsShared.tbn * n);
     //n = normalize( vsShared.normal );
 
-    vec4 lightTerm = CalculateLighting(n, normalize(vsShared.viewPos - vsShared.position));
+    vec4 lightTerm = lighting_term(n, normalize(vsShared.viewPos - vsShared.position));
 
     pl_frag = diffuse * lightTerm;
 }

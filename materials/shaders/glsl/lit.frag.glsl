@@ -19,7 +19,7 @@ void main()
 	n = normalize( vsShared.tbn * n );
 
 #ifdef LIGHTING
-	vec4 lightTerm = CalculateLighting( n, normalize( vsShared.viewPos - vsShared.position ) );
+	vec4 lightTerm = lighting_term( n, normalize( vsShared.viewPos - vsShared.position ) );
 #else
 	vec4 lightTerm = sun.ambience;
 #endif
