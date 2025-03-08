@@ -4,7 +4,7 @@
 
 void main() {
 	vec2 square = fract(gl_FragCoord.xy / vec2(2.0, 2.0));
-	float gridFinal = step(square.x * square.y, 0.02);
+	float gridFinal = step(square.x * square.y, 0.1);
 	if (gridFinal == 0) {
 		discard;
 	}
