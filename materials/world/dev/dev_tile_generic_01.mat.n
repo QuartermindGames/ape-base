@@ -1,0 +1,16 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+            string textureFilterMode nearest
+			string shaderProgram base_lighting
+			object shaderParameters
+			{
+				string diffuseMap materials/world/dev/dev_tile_generic_01.tga
+			}
+		}
+	}
+}
+

@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+			string shaderProgram base_lighting
+			object shaderParameters
+			{
+				string diffuseMap materials/world/dev/dev_blue_base_banner.tga
+			}
+		}
+	}
+}
+
