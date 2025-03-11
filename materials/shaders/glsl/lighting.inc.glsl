@@ -2,7 +2,7 @@
 
 #include "shared.inc.glsl"
 
-//#define SUN
+#define SUN
 #define SPECULAR
 
 #ifdef SPECULAR
