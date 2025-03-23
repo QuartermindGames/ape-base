@@ -7,6 +7,12 @@ const float PI = 3.14159265359;
 const float EPSILON = 0.0001;
 
 #if PLG_COMPILE_VERTEX == 1
+#define INOUT out
+#elif PLG_COMPILE_FRAGMENT == 1
+#define INOUT in
+#endif
+
+#if PLG_COMPILE_VERTEX == 1
 out
 #elif PLG_COMPILE_FRAGMENT == 1
 in
