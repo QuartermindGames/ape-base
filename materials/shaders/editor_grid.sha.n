@@ -1,0 +1,7 @@
+node.utf8
+object program
+{
+	string description  editor_grid
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/editor/wire_grid.frag.glsl
+}
