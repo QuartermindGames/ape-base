@@ -19,4 +19,8 @@ void main()
 	vsShared.uv = UV.xy / UV.w;
 	vsShared.colour = pl_vcolour;
 	vsShared.normal = N;
+
+	#ifdef PSX_SPYRO
+	vsShared.fadeFactor = PSX_GetDistanceFadeFactor(vsShared.viewPos, vsShared.position, 650.0, 700.0);
+	#endif
 }

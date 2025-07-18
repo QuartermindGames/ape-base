@@ -6,6 +6,8 @@
 const float PI = 3.14159265359;
 const float EPSILON = 0.0001;
 
+#define PSX_SPYRO
+
 #if PLG_COMPILE_VERTEX == 1
 #define INOUT out
 #elif PLG_COMPILE_FRAGMENT == 1
@@ -26,6 +28,10 @@ VertexData
 	vec2 uv;
 	vec4 colour;
 	mat3 tbn;
+
+#ifdef PSX_SPYRO
+	float fadeFactor;
+#endif
 }
 vsShared;
 
@@ -53,11 +59,48 @@ uniform sampler2D normalMap;
 uniform sampler2D specularMap;
 uniform sampler2D sphereMap;
 
+/*
+ * This is for emulating a Spyro-style fade when surfaces are far enough.
+ */
+float PSX_GetDistanceFadeFactor(vec3 viewPos, vec3 worldPos, float fadeStart, float fadeEnd)
+{
+	float dist = distance(viewPos, worldPos);
+	if (dist <= fadeStart) {
+		return 0.0;
+	} else if (dist >= fadeEnd) {
+		return 1.0;
+	}
+
+	return smoothstep(fadeStart, fadeEnd, dist);
+}
+
 #if PLG_COMPILE_VERTEX == 1
 
 vec3 extract_camera_pos(mat4 modelView)
 {
 	return vec3(-vec3(modelView[3]) * mat3(modelView));
+}
+
+#elif PLG_COMPILE_FRAGMENT == 1
+
+/*
+ * This is for emulating a Spyro-style fade when surfaces are far enough.
+ */
+vec4 PSX_GetDistanceTextureMip(sampler2D tex, vec2 texCoord, float fadeFactor)
+{
+	int maxMip = textureQueryLevels(tex) - 1;
+	if (fadeFactor <= 0.0)
+	{
+		return textureLod(tex, texCoord, 0.0);
+	}
+	else if (fadeFactor >= 1.0)
+	{
+		return textureLod(tex, texCoord, float(maxMip));
+	}
+
+	vec4 srcColour = textureLod(tex, texCoord, 0.0);
+	vec4 mipColour = textureLod(tex, texCoord, maxMip);
+	return mix(srcColour, mipColour, fadeFactor);
 }
 
 #endif
