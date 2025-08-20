@@ -58,6 +58,20 @@ uniform sampler2D diffuseMap;
 uniform sampler2D normalMap;
 uniform sampler2D specularMap;
 uniform sampler2D sphereMap;
+uniform sampler2D depthMap;
+
+#if PLG_COMPILE_VERTEX == 1
+
+vec3 extract_camera_pos(mat4 modelView)
+{
+	return vec3(-vec3(modelView[3]) * mat3(modelView));
+}
+
+#endif
+
+/////////////////////////////////////////////////////////////////////////////////////
+// PSX-style methods
+/////////////////////////////////////////////////////////////////////////////////////
 
 /*
  * This is for emulating a Spyro-style fade when surfaces are far enough.
@@ -73,15 +87,6 @@ float PSX_GetDistanceFadeFactor(vec3 viewPos, vec3 worldPos, float fadeStart, fl
 
 	return smoothstep(fadeStart, fadeEnd, dist);
 }
-
-#if PLG_COMPILE_VERTEX == 1
-
-vec3 extract_camera_pos(mat4 modelView)
-{
-	return vec3(-vec3(modelView[3]) * mat3(modelView));
-}
-
-#elif PLG_COMPILE_FRAGMENT == 1
 
 /*
  * This is for emulating a Spyro-style fade when surfaces are far enough.
@@ -103,6 +108,7 @@ vec4 PSX_GetDistanceTextureMip(sampler2D tex, vec2 texCoord, float fadeFactor)
 	return mix(srcColour, mipColour, fadeFactor);
 }
 
-#endif
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 #endif// _SHARED_INC_GLSL
