@@ -96,14 +96,14 @@ vec4 PSX_GetDistanceTextureMip(sampler2D tex, vec2 texCoord, float fadeFactor)
 	int maxMip = textureQueryLevels(tex) - 1;
 	if (fadeFactor <= 0.0)
 	{
-		return textureLod(tex, texCoord, 0.0);
+		return texture(tex, texCoord);
 	}
 	else if (fadeFactor >= 1.0)
 	{
 		return textureLod(tex, texCoord, float(maxMip));
 	}
 
-	vec4 srcColour = textureLod(tex, texCoord, 0.0);
+	vec4 srcColour = texture(tex, texCoord);
 	vec4 mipColour = textureLod(tex, texCoord, maxMip);
 	return mix(srcColour, mipColour, fadeFactor);
 }
