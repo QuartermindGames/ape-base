@@ -8,6 +8,8 @@ object material
 			object shaderParameters
 			{
 				string diffuseMap materials/editor/default_256.png
+				;string normalMap materials/editor/default_n.png
+				string specularMap materials/detail/paper_light.tga
 			}
 		}
 	}
