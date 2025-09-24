@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+    bool enableShadows false
+	array object passes
+	{
+		{
+			string shaderProgram sky
+            object shaderParameters
+            {
+                string diffuseMap materials/engine/engine_sky_default.png
+            }
+		}
+	}
+}

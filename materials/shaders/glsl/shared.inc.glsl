@@ -6,6 +6,8 @@
 const float PI = 3.14159265359;
 const float EPSILON = 0.0001;
 
+uniform double u_numTicks;
+
 #define PSX_SPYRO
 
 #if PLG_COMPILE_VERTEX == 1
@@ -62,9 +64,9 @@ uniform sampler2D depthMap;
 
 #if PLG_COMPILE_VERTEX == 1
 
-vec3 extract_camera_pos(mat4 modelView)
+vec3 extract_camera_pos(mat4 viewMatrix)
 {
-	return vec3(-vec3(modelView[3]) * mat3(modelView));
+	return vec3(-vec3(viewMatrix[3]) * mat3(viewMatrix));
 }
 
 #endif

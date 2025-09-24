@@ -1,0 +1,7 @@
+node.utf8
+object program
+{
+	string description  sky
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/sky.frag.glsl
+}
