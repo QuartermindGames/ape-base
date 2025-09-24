@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+			string shaderProgram base_lighting
+			object shaderParameters
+			{
+				string diffuseMap materials/shaders/textures/white.png
+				string normalMap materials/debug/debug_norm_ddn.png
+			}
+		}
+	}
+}
