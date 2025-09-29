@@ -13,13 +13,13 @@ const float FREQUENCY = 0.001;
 
 // texture passed is 1x64 gradient, which should span from button to top
 // there is no horz handled here, should only deal with vertical for simplicity sake
-uniform float viewPitch = 0.0;// degrees (but converted to 0 -> 1, with 1 being 90 and 0 being -90)
-uniform vec2 viewSize = vec2(640, 480);
 
 void main()
 {
-	vec2 uv = (2.0 * gl_FragCoord.xy - viewSize) / viewSize.y / 2.0;
-	uv.x = uv.x / viewSize.x * viewSize.x * 0.2;
+	float viewPitch = (degrees(-vsShared.viewAng.x) + 90.0) / 180.0;
+
+	vec2 uv = (2.0 * gl_FragCoord.xy - u_viewSize) / u_viewSize.y / 2.0;
+	uv.x = uv.x / u_viewSize.x * u_viewSize.x * 0.2;
 	uv.y = uv.y / 2.0 + viewPitch;
 
 	float dist = length(uv);
@@ -29,7 +29,7 @@ void main()
 
 	vec2 nuv = vec2(0.5, clamp(height + 0.5 + waveOffset, 0.0, 1.0));
 
-	vec2 pixelSize = vec2(1.0 / viewSize.x, 1.0 / viewSize.y);
+	vec2 pixelSize = vec2(1.0 / u_viewSize.x, 1.0 / u_viewSize.y);
 
 	vec3 skyColour = vec3(0.0);
 	for (int i = 0; i < 4; ++i)

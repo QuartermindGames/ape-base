@@ -6,7 +6,8 @@
 const float PI = 3.14159265359;
 const float EPSILON = 0.0001;
 
-uniform double u_numTicks;
+uniform double u_numTicks = 0.0;
+uniform vec2 u_viewSize = vec2(640, 480);
 
 #define PSX_SPYRO
 
@@ -24,6 +25,8 @@ in
 VertexData
 {
 	vec3 viewPos;
+	vec3 viewAng;
+
 	vec3 position;
 	vec3 normal;
 	vec2 reflect;
@@ -67,6 +70,21 @@ uniform sampler2D depthMap;
 vec3 extract_camera_pos(mat4 viewMatrix)
 {
 	return vec3(-vec3(viewMatrix[3]) * mat3(viewMatrix));
+}
+
+vec3 extract_camera_ang(mat4 viewMatrix)
+{
+	vec3 forward = -normalize(vec3(viewMatrix[0][2], viewMatrix[1][2], viewMatrix[2][2]));
+	vec3 up = normalize(vec3(viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]));
+
+	float pitch = asin(-forward.y);
+	float yaw = atan(forward.x, -forward.z);
+
+	vec3 right = cross(forward, up);
+	vec3 worldUp = vec3(0.0, 1.0, 0.0);
+	float roll = atan(dot(right, worldUp), dot(up, worldUp));
+
+	return vec3(pitch, yaw, roll);
 }
 
 #endif
