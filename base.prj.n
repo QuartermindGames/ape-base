@@ -8,10 +8,7 @@ object project
 
     bool visibleInEditor false
 
-    array string mounts
-    {
-        "dev" "ship"
-    }
+    array string mountLocations { "dev" "ship" "test" }
 
     object cook
     {
