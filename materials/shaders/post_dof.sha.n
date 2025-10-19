@@ -1,0 +1,18 @@
+node.utf8
+object program
+{
+	string description  post_dof
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/dof.frag.glsl
+
+	object defaultPass
+    {
+        string textureFilterMode    linear
+        object shaderParameters
+        {
+            string diffuseMap   _rt_postfx
+            string depthMap     _depth_postfx
+            string viewportSize _vpsize
+        }
+    }
+}
