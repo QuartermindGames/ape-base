@@ -6,7 +6,6 @@ object material
         {
             string textureFilterMode nearest
 			string shaderProgram sprite
-			bool depthTest true
 			object shaderParameters
 			{
 				string diffuseMap materials/editor/icons/icon_brush.png

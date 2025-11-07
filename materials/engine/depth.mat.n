@@ -8,7 +8,6 @@ object material {
 				zero 
 				zero 
 			}
-			bool depthTest true 
 			object shaderParameters {
 			}
 		}

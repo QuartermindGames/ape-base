@@ -8,7 +8,6 @@ object material {
 				src_alpha 
 				one_minus_src_alpha 
 			}
-			bool depthTest true 
 			object shaderParameters {
 				string diffuseMap materials/ui/fonts/default_small.png 
 			}

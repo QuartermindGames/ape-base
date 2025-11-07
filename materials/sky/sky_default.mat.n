@@ -5,6 +5,7 @@ object material
 	array object passes
 	{
 		{
+			bool depthMask false
 			string shaderProgram sky
             object shaderParameters
             {

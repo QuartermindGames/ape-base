@@ -4,7 +4,6 @@ object material {
         {
 		string shaderProgram default
 		    array string blendMode { src_alpha one_minus_src_alpha }
-			bool depthTest true 
 			object shaderParameters
 			{
 				string diffuseMap materials/ui/logos/logo_qm.png
