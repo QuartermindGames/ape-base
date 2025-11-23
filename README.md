@@ -26,9 +26,14 @@ object project
 
 ## Additional Credits
 
-`materials/editor/icon_*.png`
+- [materials/editor/icons/icon_brush.png](materials/editor/icons/icon_brush.png)
+- [materials/editor/icons/icon_camera.png](materials/editor/icons/icon_camera.png)
+- [materials/editor/icons/icon_entity.png](materials/editor/icons/icon_entity.png)
+- [materials/editor/icons/icon_light.png](materials/editor/icons/icon_light.png)
+- [materials/editor/icons/icon_node.png](materials/editor/icons/icon_node.png)
+- [materials/editor/icons/icon_room.png](materials/editor/icons/icon_room.png)
 
-These were produced by [Luis Antônio](https://eunaoseibrother.newgrounds.com/) as commissioned items specifically for APE Tech.
+These were produced by [Luis Antônio](https://eunaoseibrother.newgrounds.com/) as commissioned items specifically for this engine.
 
 ----
 
