@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+    {
+		{
+			string textureFilterMode mipmap_nearest
+			string shaderProgram base_lighting
+			object shaderParameters
+            {
+				string diffuseMap materials/terrain/terrain_default.png
+			}
+		}
+	}
+}
