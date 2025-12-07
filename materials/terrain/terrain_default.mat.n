@@ -5,10 +5,13 @@ object material
     {
 		{
 			string textureFilterMode mipmap_nearest
-			string shaderProgram base_lighting
+			string shaderProgram terrain
 			object shaderParameters
             {
-				string diffuseMap materials/terrain/terrain_default.png
+				string diffuseMap    materials/terrain/terrain_default.png
+
+                string terrain.height materials/terrain/terrain_default_h.png
+                array float terrain.resolution { 512 512 }
 			}
 		}
 	}

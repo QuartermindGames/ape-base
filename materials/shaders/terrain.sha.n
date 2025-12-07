@@ -1,0 +1,33 @@
+node.utf8
+object program
+{
+	string description terrain
+	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/terrain.frag.glsl
+
+    object defaultPass
+    {
+        int cullMode 1
+        object shaderParameters
+        {
+            string normalMap    materials/shaders/textures/normal.tga
+            string specularMap  materials/shaders/textures/black.png
+            string cloudMap     materials/sky/cloudlayer00.tga
+        }
+    }
+
+    object baseLightingPass
+    {
+        string dummy dummy
+    }
+
+    object definitions
+    {
+        array string fragment { "LIGHTING" "TERRAIN" }
+
+        ; so we were going to do this in the vertex shader
+        ; but having it all work with collisions, shadows
+        ; and such is uh, problematic, so we'll bin it for now
+        ;array string vertex { "TERRAIN" }
+    }
+}

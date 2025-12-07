@@ -65,6 +65,42 @@ uniform sampler2D specularMap;
 uniform sampler2D sphereMap;
 uniform sampler2D depthMap;
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Terrain
+/////////////////////////////////////////////////////////////////////////////////////
+
+struct Terrain
+{
+	sampler2D	height;
+	vec2		resolution;
+	float		scale;
+};
+uniform Terrain terrain;
+
+float terrain_get_height( vec2 uv )
+{
+	return texture( terrain.height, uv ).r;
+}
+
+vec3 terrain_get_normal( vec2 uv, float str )
+{
+	vec2 step = 1.0 / terrain.resolution;
+
+	float hl = terrain_get_height( uv + vec2(-step.x, 0.0) );
+	float hr = terrain_get_height( uv + vec2(step.x, 0.0) );
+	float hd = terrain_get_height( uv + vec2(0.0, -step.y) );
+	float hu = terrain_get_height( uv + vec2(0.0, step.y) );
+
+	float dx = hl - hr;
+	float dy = hd - hu;
+
+	vec3 normal = vec3( dx, dy, 1.0 / str );
+	return normalize( normal );
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
 #if PLG_COMPILE_VERTEX == 1
 
 vec3 extract_camera_pos(mat4 viewMatrix)
@@ -88,6 +124,14 @@ vec3 extract_camera_ang(mat4 viewMatrix)
 }
 
 #endif
+
+vec4 blend_samples_3way(sampler2D t0, sampler2D t1, sampler2D t2, vec2 uv)
+{
+	vec4 sampleA = texture(t0, uv);
+	vec4 sampleB = texture(t1, uv);
+	vec4 sampleC = texture(t2, uv);
+	return sampleA * (1 - vsShared.colour.g) + sampleB * vsShared.colour.g;
+}
 
 /////////////////////////////////////////////////////////////////////////////////////
 // PSX-style methods

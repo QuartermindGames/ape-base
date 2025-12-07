@@ -13,17 +13,9 @@ uniform sampler2D uBlendBNormal;
 #include "lighting.inc.glsl"
 #include "fog.inc.glsl"
 
-vec4 BlendTextures( sampler2D t0, sampler2D t1, sampler2D t2 )
-{
-	vec4 sampleA = texture( t0, vsShared.uv.st );
-	vec4 sampleB = texture( t1, vsShared.uv.st );
-	vec4 sampleC = texture( t2, vsShared.uv.st );
-	return sampleA * ( 1 - vsShared.colour.g ) + sampleB * vsShared.colour.g;
-}
-
 void main()
 {
-	vec4 dsample = BlendTextures( uBlendR, uBlendG, uBlendB );
+	vec4 dsample = blend_samples_3way( uBlendR, uBlendG, uBlendB, vsShared.uv );
 	if ( dsample.a < 0.1 )
 	{
 		discard;
