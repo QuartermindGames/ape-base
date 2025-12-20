@@ -7,7 +7,7 @@ object material
 			string shaderProgram default
 			object shaderParameters
 			{
-				string diffuseMap $proc_fallback
+				string diffuseMap _proc_fallback
 			}
 		}
 	}
