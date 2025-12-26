@@ -11,7 +11,7 @@ object program {
         {
             string normalMap    materials/shaders/textures/normal.tga
             string specularMap  materials/shaders/textures/black.png
-            string cloudMap     materials/sky/cloudlayer00.tga
+            string cloudMap     materials/sky/sky_cloud_cover_00.dds
         }
     }
 

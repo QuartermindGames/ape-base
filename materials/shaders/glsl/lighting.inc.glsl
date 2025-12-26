@@ -64,8 +64,9 @@ vec4 lighting_term(vec3 n, vec3 viewDir)
 	// Apply the sun term first
 	dir = normalize(-sun.position);
 
-	float u_cloudScale = 0.5;
-	vec2 u_windDirection = vec2(0.5, 0.5);
+	//TODO: these are supposed to be uniforms...
+	float u_cloudScale = 0.45;
+	vec2 u_windDirection = vec2(0.15, 0.15);
 
 	#ifdef CLOUD_COVER
 	vec2 cloudScroll = vec2(float(u_numTicks / 100.0) * (u_windDirection.x / 100.0), float(-u_numTicks / 100.0) * (u_windDirection.y / 100.0));

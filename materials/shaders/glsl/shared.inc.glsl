@@ -64,6 +64,7 @@ uniform sampler2D normalMap;
 uniform sampler2D specularMap;
 uniform sampler2D sphereMap;
 uniform sampler2D depthMap;
+uniform sampler2D detailMap;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Terrain
