@@ -1,0 +1,38 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+			string shaderProgram default
+			array object animators
+			{
+				{
+                    string type "textureSequence"
+                    string target "$diffuseMap"
+
+					float speed 8.0
+					bool isLooping true
+
+					object textureSequence
+					{
+						array string frames
+						{
+							"materials/test/heart_1.dds"
+							"materials/test/heart_2.dds"
+							"materials/test/heart_3.dds"
+							"materials/test/heart_4.dds"
+							"materials/test/heart_5.dds"
+							"materials/test/heart_6.dds"
+						}
+					}
+				}
+			}
+
+			object shaderParameters
+			{
+				string diffuseMap "materials/test/heart_1.dds"
+			}
+		}
+	}
+}
