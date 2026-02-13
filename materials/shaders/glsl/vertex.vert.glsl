@@ -18,8 +18,11 @@ void main()
 	vec3 N = normalize(vec3(pl_model * vec4(pl_vnormal, 0.0)));
 	vsShared.tbn = mat3(T, B, N);
 
-	vec4 UV = pl_texture * vec4(pl_vuv, 0.0, 1.0);
+	vec4 UV = pl_texture * vec4(pl_vuv[0], 0.0, 1.0);
 	vsShared.uv = UV.xy / UV.w;
+
+	vsShared.lightmapUV = pl_vuv[1];
+
 	vsShared.colour = pl_vcolour;
 	vsShared.normal = N;
 

@@ -14,6 +14,12 @@ void main()
 		discard;
 #endif
 
+#ifdef LIGHTMAP
+	vec3 light = textureBicubic( lightMap, vsShared.lightmapUV ).rgb;
+	pl_frag = vec4(light, 1.0) * diffuse;
+	return;
+#endif
+
 	vec3 n = normalize( texture( normalMap, vsShared.uv ).rgb * 2.0 - 1.0 );
 	n = normalize( vsShared.tbn * n );
 
