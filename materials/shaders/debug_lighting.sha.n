@@ -16,11 +16,6 @@ object program
         }
     }
 
-    object baseLightingPass
-    {
-        string dummy dummy
-    }
-
     object definitions
     {
         array string fragment
