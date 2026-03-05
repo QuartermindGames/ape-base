@@ -10,21 +10,32 @@ uniform float aperture;
 
 float linear_z(float z, float near, float far)
 {
-	return (2.0 * near) / (far + near - z * (far - near));
+	return near / (far + near - z * (far - near));
 }
 
 void main()
 {
 	vec2 pixel = gl_FragCoord.xy / viewportSize;
 
+	float near = 0.1;
+	float far = 1000.0;
+
 	vec3 colour = texture(diffuseMap, pixel).rgb;
-	float depth = linear_z(texture(depthMap, pixel).r, 0.1, 10000.0);
+	float depth = linear_z(texture(depthMap, pixel).r, near, far);
 
-	float objectDistance = 0.5;
+	float coc;
+	if (depth < near)
+	{
+		float x = 0.3;
+		coc = -(depth / x - near) * focusScale * max(x, 1.0);
+	}
+	else
+	{
+		coc = (depth * far - focusPoint) / focusScale * max(focusPoint, 1.0);
+	}
 
-	float coc = (depth * 1000.0 - focusPoint) / focusScale * max(focusPoint, 1.0);
 	coc = clamp(coc, 0.0, 1.0);
-	if (coc < 0.01)
+	if (coc < 0.1)
 	{
 		pl_frag = vec4(colour, 1.0);
 		return;
