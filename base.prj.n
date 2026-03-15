@@ -1,7 +1,7 @@
 node.utf8
 object project
 {
-    string name         "APE Base"
+    string name         "ApeTech Base Game"
     string developer    "Quartermind Games"
     string website      "https://quartermind.com/"
     array int version   { 0 0 0 }
@@ -10,15 +10,22 @@ object project
 
     array string mountLocations { "dev" "ship" "test" }
 
-    object cook
+    object editor
     {
-        ; here is a list of properties for the cooking tool
-        ; each of these arrays come in pairs - first is the source and then followed by destination
-
-        array string worlds
+        ; this is copied over from qm1,
+        ; so some of this is isn't valid
+        array string materialPaths
         {
-            ; explicit list of worlds, all dependencies will automatically be carried over
-            "dev/worlds/example.wld.n"  "ship/worlds/example.wld.n"
+            "materials/editor"
+            "materials/test"
+            "materials/debug"
+            "materials/sky"
+
+			"materials/water"
+            "materials/world"
+            "materials/world/props"
+            "materials/world/gradients"
+            "materials/world/dev"
         }
     }
 }
