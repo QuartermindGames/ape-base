@@ -1,0 +1,15 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+        {
+            string textureFilterMode nearest
+			string shaderProgram sprite
+			object shaderParameters
+			{
+				string diffuseMap materials/editor/icons/icon_ambience_manager.png
+			}
+		}
+	}
+}

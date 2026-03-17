@@ -1,0 +1,18 @@
+node.utf8
+array object languages
+{
+    ; id            Internal identifier
+    ; description   Name used per interface
+
+    {
+        string id           "ger"
+        string description  "Deutsch"
+        array object strings
+        {
+            {
+                string id       "test_message"
+                string value    "Das ist ein Test. Hallo. Ich spreche auf Deutsch. Es ist großartig!"
+            }
+        }
+    }
+}
