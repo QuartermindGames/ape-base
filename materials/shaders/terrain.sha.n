@@ -14,13 +14,12 @@ object program
             string specularMap  materials/shaders/textures/black.png
             string cloudMap     materials/sky/sky_cloud_cover_00.dds
             string detailMap    materials/detail/rock.tga
-            string lightMap     %lightmap
         }
     }
 
     object definitions
     {
-        array string fragment { "LIGHTING" "LIGHTMAP" "TERRAIN" }
+        array string fragment { "LIGHTING" "TERRAIN" }
 
         ; so we were going to do this in the vertex shader
         ; but having it all work with collisions, shadows
