@@ -17,7 +17,7 @@ void main()
 #ifdef LIGHTMAP
 
 	vec3 light = textureBicubic( lightMap, vsShared.lightmapUV ).rgb;
-	pl_frag = CalculateFogTerm( vec4(light, 1.0) * diffuse );
+	pl_frag = CalculateFogTerm( vec4(light, 1.0) * diffuse, vsShared.viewPos, vsShared.position  );
 
 #else
 
@@ -29,7 +29,7 @@ void main()
 	#else
 	vec4 lightTerm = sun.ambience;
 	#endif
-	vec4 outp = CalculateFogTerm( lightTerm * diffuse );
+	vec4 outp = CalculateFogTerm( lightTerm * diffuse, vsShared.viewPos, vsShared.position  );
 
 	pl_frag = outp;
 

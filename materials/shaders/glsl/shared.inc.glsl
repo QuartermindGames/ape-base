@@ -200,9 +200,12 @@ vec4 blend_samples_3way(sampler2D t0, sampler2D t1, sampler2D t2, vec2 uv)
 float PSX_GetDistanceFadeFactor(vec3 viewPos, vec3 worldPos, float fadeStart, float fadeEnd)
 {
 	float dist = distance(viewPos, worldPos);
-	if (dist <= fadeStart) {
+	if (dist <= fadeStart)
+	{
 		return 0.0;
-	} else if (dist >= fadeEnd) {
+	}
+	else if (dist >= fadeEnd)
+	{
 		return 1.0;
 	}
 
