@@ -27,6 +27,6 @@ void main()
 	n = normalize( vsShared.tbn * n );
 
 	vec4 lightTerm = lighting_term( n, normalize( vsShared.viewPos - vsShared.position ) );
-	vec4 outp = CalculateFogTerm( lightTerm * dsample, vsShared.viewPos, vsShared.position  );
+	vec4 outp = fog_apply( lightTerm * dsample, vsShared.viewPos, vsShared.position  );
 	pl_frag = outp;
 }

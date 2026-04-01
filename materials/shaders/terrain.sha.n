@@ -19,7 +19,7 @@ object program
 
     object definitions
     {
-        array string fragment { "LIGHTING" "TERRAIN" }
+        array string fragment { "LIGHTING" "CLOUD" "WATER" }
 
         ; so we were going to do this in the vertex shader
         ; but having it all work with collisions, shadows

@@ -22,7 +22,7 @@ void main()
 #else
 	vec4 lightTerm = sun.ambience;
 #endif
-	vec4 outp = CalculateFogTerm( lightTerm * diffuse, vsShared.viewPos, vsShared.position );
+	vec4 outp = fog_apply( lightTerm * diffuse, vsShared.viewPos, vsShared.position );
 
     pl_frag = outp;
 }

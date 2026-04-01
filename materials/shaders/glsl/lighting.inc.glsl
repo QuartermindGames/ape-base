@@ -3,7 +3,6 @@
 #include "shared.inc.glsl"
 
 #define SUN
-#define CLOUD_COVER
 #define SPECULAR
 
 uniform sampler2D cloudMap;
@@ -64,17 +63,24 @@ vec4 lighting_term(vec3 n, vec3 viewDir)
 	// Apply the sun term first
 	dir = normalize(-sun.position);
 
+#ifdef CLOUD
 	//TODO: these are supposed to be uniforms...
-	float u_cloudScale = 0.45;
+	float u_cloudScale = 1.95;
 	vec2 u_windDirection = vec2(0.15, 0.15);
 
-	#ifdef CLOUD_COVER
 	vec2 cloudScroll = vec2(float(u_numTicks / 100.0) * (u_windDirection.x / 100.0), float(-u_numTicks / 100.0) * (u_windDirection.y / 100.0));
 	vec2 cloudPos = (vsShared.position.xz / 1000.0) * u_cloudScale + cloudScroll;
 	float cloudCast = texture(cloudMap, cloudPos).r;
-	#else
+
+#ifdef WATER
+	float heightFadeStart = 500.0;
+	float heightFadeEnd = 0.0;
+	float heightFade = smoothstep(heightFadeStart, heightFadeEnd, vsShared.position.y);
+	cloudCast = mix(cloudCast, 1.0, heightFade);
+#endif
+#else
 	float cloudCast = 1.0;
-	#endif
+#endif
 
 	result += vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a) * cloudCast;
 	#ifdef SPECULAR

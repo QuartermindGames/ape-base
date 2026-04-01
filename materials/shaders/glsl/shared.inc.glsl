@@ -3,6 +3,17 @@
 #ifndef _SHARED_INC_GLSL
 #define _SHARED_INC_GLSL
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Below is a summary of the available pre-processor flags, and what they can do.
+// You'll want to set these via your shader definition file, under the 'definitions'
+// block.
+//
+// LIGHTING	Dynamic per-pixel lighting.
+// LIGHTMAP	Baked lighting.
+// CLOUD	Enables/disables cloud coverage.
+// WATER	Depends on the above, but will fade it based on height.
+/////////////////////////////////////////////////////////////////////////////////////
+
 const float PI = 3.14159265359;
 const float EPSILON = 0.0001;
 
