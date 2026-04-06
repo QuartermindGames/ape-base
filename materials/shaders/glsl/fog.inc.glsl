@@ -12,5 +12,5 @@ vec4 fog_apply(vec4 n, vec3 viewPos, vec3 worldPos)
 {
     float fogDistance = distance(viewPos, worldPos);
     float fogAmount = 1.0 - clamp((fogDistance - fogFar) / (fogNear - fogFar), 0.0, 1.0);
-    return mix(n, fogColour, fogAmount);
+    return mix(n, fogColour, fogAmount * fogColour.a);
 }

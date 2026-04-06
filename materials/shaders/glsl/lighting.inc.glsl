@@ -71,22 +71,30 @@ vec4 lighting_term(vec3 n, vec3 viewDir)
 	vec2 cloudScroll = vec2(float(u_numTicks / 100.0) * (u_windDirection.x / 100.0), float(-u_numTicks / 100.0) * (u_windDirection.y / 100.0));
 	vec2 cloudPos = (vsShared.position.xz / 1000.0) * u_cloudScale + cloudScroll;
 	float cloudCast = texture(cloudMap, cloudPos).r;
-
-#ifdef WATER
-	float heightFadeStart = 500.0;
-	float heightFadeEnd = 0.0;
-	float heightFade = smoothstep(heightFadeStart, heightFadeEnd, vsShared.position.y);
-	cloudCast = mix(cloudCast, 1.0, heightFade);
-#endif
 #else
 	float cloudCast = 1.0;
 #endif
 
+#ifdef WATER
+	result += vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a) + cloudCast;
+	#ifdef SPECULAR
+	result += sterm(dir, viewDir, specular * sun.colour.w * 2.0, 8.0, n) + cloudCast;
+	#endif
+#else
 	result += vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a) * cloudCast;
 	#ifdef SPECULAR
 	result += sterm(dir, viewDir, specular * sun.colour.w * 2.0, 8.0, n) * cloudCast;
 	#endif
+#endif // WATER
+
 	#endif
+
+#ifdef WATER
+	float heightFadeStart = 0.0;
+	float heightFadeEnd = 500.0;
+	float heightFade = smoothstep(heightFadeStart, heightFadeEnd, vsShared.position.y);
+	result = result * heightFade;
+#endif
 
 	dir = normalize(light.position - vsShared.position);
 	float d = length(light.position - vsShared.position);
