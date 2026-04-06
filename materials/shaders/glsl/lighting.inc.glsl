@@ -76,9 +76,9 @@ vec4 lighting_term(vec3 n, vec3 viewDir)
 #endif
 
 #ifdef WATER
-	result += vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a) + cloudCast;
+	result += cloudCast * vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a);
 	#ifdef SPECULAR
-	result += sterm(dir, viewDir, specular * sun.colour.w * 2.0, 8.0, n) + cloudCast;
+	result += cloudCast * sterm(dir, viewDir, specular * sun.colour.w * 2.0, 8.0, n);
 	#endif
 #else
 	result += vec4(sun.colour.rgb, 1.0) * (lterm(n, dir) * sun.colour.a) * cloudCast;
