@@ -21,6 +21,7 @@ object program
         {
             "ALPHATEST"
             "LIGHTING"
+            "LIGHTMAP"
         }
     }
 }
