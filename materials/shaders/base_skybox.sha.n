@@ -1,0 +1,24 @@
+node.utf8
+object program
+{
+	string description  base_skybox
+	string vertexPath   materials/shaders/glsl/skybox.vert.glsl
+	string fragmentPath materials/shaders/glsl/skybox.frag.glsl
+
+    object defaultPass
+    {
+        int cullMode 1
+        object shaderParameters
+        {
+            array string cubeMap
+            {
+                "materials/shaders/textures/cube_1.tga"
+                "materials/shaders/textures/cube_2.tga"
+                "materials/shaders/textures/cube_3.tga"
+                "materials/shaders/textures/cube_4.tga"
+                "materials/shaders/textures/cube_5.tga"
+                "materials/shaders/textures/cube_6.tga"
+            }
+        }
+    }
+}

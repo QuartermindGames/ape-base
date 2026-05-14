@@ -75,13 +75,14 @@ uniform Light light;
 
 // this seems terrible, maybe we could
 // just treat these as generic slots of some kind?
-uniform sampler2D diffuseMap;
-uniform sampler2D normalMap;
-uniform sampler2D specularMap;
-uniform sampler2D sphereMap;
-uniform sampler2D depthMap;
-uniform sampler2D detailMap;
-uniform sampler2D lightMap;
+uniform sampler2D 	diffuseMap;
+uniform sampler2D 	normalMap;
+uniform sampler2D 	specularMap;
+uniform sampler2D 	sphereMap;
+uniform sampler2D 	depthMap;
+uniform sampler2D 	detailMap;
+uniform sampler2D 	lightMap;
+uniform samplerCube cubeMap;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Terrain
