@@ -8,7 +8,7 @@
 
 void main()
 {
-	vec4 diffuse = PSX_GetDistanceTextureMip( diffuseMap, vsShared.uv, vsShared.fadeFactor );
+	vec4 diffuse = texture( diffuseMap, vsShared.uv ); //PSX_GetDistanceTextureMip( diffuseMap, vsShared.uv, vsShared.fadeFactor );
 #ifdef ALPHATEST
 	if ( diffuse.a < 0.1 )
 		discard;
