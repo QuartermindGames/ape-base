@@ -1,0 +1,18 @@
+node.utf8
+object material
+{
+	bool castShadows false
+	array object passes
+	{
+        	{
+			array float textureScroll { 0.1 0.0 }
+			array string blendMode { one one }
+			string shaderProgram default
+			object shaderParameters
+			{
+				string diffuseMap materials/gradients/gradient_complex_yellow.png
+			}
+		}
+	}
+}
+
