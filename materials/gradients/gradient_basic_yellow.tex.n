@@ -1,0 +1,5 @@
+node.utf8
+object texture
+{
+	string wrapMode clamp
+}
