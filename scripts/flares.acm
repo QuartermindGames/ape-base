@@ -1,0 +1,54 @@
+node.utf8
+array object flares
+{
+    {
+        string material "materials/effects/effect_flare_sheet.mat.n"
+
+        array object elements
+        {
+            {
+                float w     128
+                float h     128
+                float x     0
+                float y     0
+                float scale 2
+                bool rotate true
+            }
+            {
+                float w     128
+                float h     128
+                float x     128
+                float y     0
+                float delta 0.5
+            }
+            {
+                float w     128
+                float h     128
+                float x     256
+                float y     0
+            }
+            {
+                float w     128
+                float h     128
+                float x     384
+                float y     0
+                float delta 0.25
+                float scale 0.5
+            }
+            {
+                float w     128
+                float h     128
+                float x     384
+                float y     0
+            }
+            {
+                float w     128
+                float h     128
+                float x     256
+                float y     0
+                float delta 0.25
+                float scale 0.5
+            }
+        }
+    }
+}

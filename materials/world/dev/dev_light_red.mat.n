@@ -1,0 +1,16 @@
+node.utf8
+object material
+{
+	array object passes
+	{
+		{
+			string shaderProgram default
+			object shaderParameters
+			{
+				string diffuseMap materials/engine/red.png
+			}
+		}
+	}
+
+	array float light { 1.0 0.0 0.0 2.0 }
+}
