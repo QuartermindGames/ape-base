@@ -10,6 +10,7 @@
 //
 // LIGHTING	Dynamic per-pixel lighting.
 // LIGHTMAP	Baked lighting.
+// CUBEMAP	Cubemap reflection.
 // CLOUD	Enables/disables cloud coverage.
 // WATER	Depends on the above, but will fade it based on height.
 /////////////////////////////////////////////////////////////////////////////////////
@@ -53,25 +54,6 @@ VertexData
 #endif
 }
 vsShared;
-
-struct Sun
-{
-	vec4 colour;
-	vec3 position;
-	vec4 ambience;
-};
-uniform Sun sun;
-
-struct Light
-{
-	vec4 colour;
-	float radius;
-	vec3 position;
-	vec3 direction;
-	float cutOff;
-	sampler2D map;
-};
-uniform Light light;
 
 // this seems terrible, maybe we could
 // just treat these as generic slots of some kind?
@@ -200,6 +182,13 @@ vec4 blend_samples_3way(sampler2D t0, sampler2D t1, sampler2D t2, vec2 uv)
 	vec4 sampleB = texture(t1, uv);
 	vec4 sampleC = texture(t2, uv);
 	return sampleA * (1 - vsShared.colour.g) + sampleB * vsShared.colour.g;
+}
+
+vec3 cubemap_reflect( vec3 pos, vec3 viewPos, vec3 normal )
+{
+	vec3 i = normalize( pos - viewPos );
+	vec3 r = reflect( i, normal );
+	return r;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

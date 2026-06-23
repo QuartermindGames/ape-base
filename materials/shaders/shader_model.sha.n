@@ -1,0 +1,25 @@
+node.utf8
+object program
+{
+	string description  shader_model
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/model.frag.glsl
+
+    object defaultPass
+    {
+        int cullMode 1
+        object shaderParameters
+        {
+            string specularMap      materials/shaders/textures/black.png
+            float uRimIntensity     1.0
+            float uSpecIntensity    4.0
+            float uSpecDiffuse      10.0
+        }
+    }
+
+    object definitions
+    {
+        array string fragment { "LIGHTING" "CUBEMAP" }
+        array string vertex { "LIGHTING" "CUBEMAP" }
+    }
+}

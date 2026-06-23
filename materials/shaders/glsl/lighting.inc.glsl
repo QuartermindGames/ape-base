@@ -2,38 +2,34 @@
 
 #include "shared.inc.glsl"
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Lighting
+/////////////////////////////////////////////////////////////////////////////////////
+
+struct Lighting
+{
+	vec4 colour;
+	vec3 dir;
+};
+uniform Lighting lighting;
+
 #define SUN
 #define SPECULAR
 
+INOUT vec4 io_rimLighting;
+INOUT vec4 io_diffuseLighting;
+INOUT vec4 io_specularLighting;
+
 uniform sampler2D cloudMap;
 
-#ifdef SPECULAR
-float sterm(vec3 lDir, vec3 viewDir, float specular, float specPower, vec3 normal)
+uniform float uSpecIntensity = 0.0;
+uniform float uSpecDiffuse = 0.0;
+
+uniform float uRimIntensity = 1.0;
+
+vec4 diffuse_lighting(vec3 lightDir, vec3 normal)
 {
-	#ifdef CELL_SHADED
-
-	vec3 r = reflect(-lDir, normal);
-	float i = max(dot(viewDir, r), 0.0);
-	if (i > 0.75)
-	{
-		return specular;
-	}
-
-	return 0.0f;
-
-	#else
-
-	vec3 halfway = normalize(lDir + viewDir);
-	return pow(max(dot(normal, halfway), 0.0), specPower) * specular;
-
-	#endif
-}
-#endif
-
-float lterm(vec3 n, vec3 l)
-{
-	#ifdef CELL_SHADED
-
+#ifdef CELL_SHADED
 	float i = dot(n, l);
 
 	float o = 0.0;
@@ -41,13 +37,50 @@ float lterm(vec3 n, vec3 l)
 	if (i > 0.50) { o += (i / 2); }
 	if (i > 0.25) { o += (i / 2); }
 
-	return o;
+	return vec4( o, o, o, 1.0 );
+#else
+	return max(dot(normal, lightDir), 0.0) * lighting.colour;
+#endif
+}
 
-	#else
+vec4 rim_lighting(vec3 viewDir, vec3 lightDir, vec3 normal)
+{
+	float d = 1.0 - dot(viewDir, normal);
+	float i = smoothstep(0.5, 0.75, d * pow(dot(lightDir, normal), 0.1)) * uRimIntensity;
+	return i * lighting.colour;
+}
 
+vec4 specular_lighting(vec3 viewDir, vec3 lightDir, vec3 normal)
+{
+#ifdef CELL_SHADED
+	vec3 r = reflect( -lightDir, normal );
+	float i = max( dot( viewDir, r ), 0.0 );
+	if ( i > 0.75 )
+	{
+		return i * lighting.colour;
+	}
+
+	return vec4( 0 );
+#else
+	vec3 h = normalize(lightDir + viewDir);
+	float i = pow(max(dot(h, normal), 0.0), uSpecDiffuse) * uSpecIntensity;
+	return i * lighting.colour;
+#endif
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+/*
+float sterm(vec3 lDir, vec3 viewDir, float specular, float specPower, vec3 normal)
+{
+	vec3 halfway = normalize(lDir + viewDir);
+	return pow(max(dot(normal, halfway), 0.0), specPower) * specular;
+}
+
+float lterm(vec3 n, vec3 l)
+{
 	return max(dot(n, l), 0.0);
-
-	#endif
 }
 
 vec4 lighting_term(vec3 n, vec3 viewDir)
@@ -121,3 +154,4 @@ vec4 lighting_term(vec3 n, vec3 viewDir)
 
 	return max(result, sun.ambience);
 }
+*/

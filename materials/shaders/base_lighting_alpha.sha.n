@@ -1,8 +1,8 @@
 node.utf8
 object program
 {
-	string description base_lighting_alpha
-	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+	string description  base_lighting_alpha
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
 	string fragmentPath materials/shaders/glsl/lit.frag.glsl
 
     object defaultPass
@@ -10,7 +10,6 @@ object program
         int cullMode 1
         object shaderParameters
         {
-            string normalMap    materials/shaders/textures/normal.tga
             string specularMap  materials/shaders/textures/black.png
             string cloudMap     materials/sky/sky_cloud_cover_00.dds
             string lightMap     %lightmap
@@ -19,11 +18,7 @@ object program
 
     object definitions
     {
-        array string fragment
-        {
-            "ALPHATEST"
-            "LIGHTING"
-            "LIGHTMAP"
-        }
+        array string fragment   { "ALPHATEST" "LIGHTMAP" }
+        array string vertex     { "LIGHTMAP" }
     }
 }

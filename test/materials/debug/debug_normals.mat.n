@@ -4,7 +4,7 @@ object material
 	array object passes
 	{
 		{
-			string shaderProgram debug_normals
+			string shaderProgram shader_debug_normals
 		}
 	}
 }

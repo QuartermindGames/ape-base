@@ -17,11 +17,7 @@ void main()
 	vec3 n = normalize( texture( normalMap, vsShared.uv ).rgb * 2.0 - 1.0 );
 	n = normalize( vsShared.tbn * n );
 
-#ifdef LIGHTING
 	vec4 lightTerm = vsShared.colour;// + lighting_term( n, normalize( vsShared.viewPos - vsShared.position ) );
-#else
-	vec4 lightTerm = sun.ambience;
-#endif
 
 	vec4 outp = fog_apply( lightTerm * diffuse, vsShared.viewPos, vsShared.position );
 

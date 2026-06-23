@@ -1,7 +1,8 @@
 node.utf8
-object program {
-	string description debug_normals
-	string vertexPath materials/shaders/glsl/vertex.vert.glsl
+object program
+{
+	string description  shader_debug_normals
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
 	string fragmentPath materials/shaders/glsl/normals.frag.glsl
 
     object defaultPass

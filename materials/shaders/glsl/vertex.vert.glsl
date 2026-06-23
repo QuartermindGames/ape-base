@@ -1,6 +1,7 @@
 // Copyright © 2020-2026 Quartermind Games, Mark E. Sowden <markelswo@gmail.com>
 
 #include "shared.inc.glsl"
+#include "lighting.inc.glsl"
 
 void main()
 {
@@ -13,20 +14,33 @@ void main()
 	vsShared.viewPos = extract_camera_pos(modelView);
 	vsShared.viewAng = extract_camera_ang(modelView);
 
-	vsShared.normal = normalize(vec3(pl_model * vec4(pl_vnormal, 0.0)));
-	vsShared.tbn = mat3(
-		normalize(vec3(pl_model * vec4(pl_vtangent, 0.0))),
-		normalize(vec3(pl_model * vec4(pl_vbitangent, 0.0))),
-		vsShared.normal);
+	vec3 T = normalize(vec3(pl_model * vec4(pl_vtangent, 0.0)));
+	vec3 B = normalize(vec3(pl_model * vec4(pl_vbitangent, 0.0)));
+	vec3 N = normalize(vec3(pl_model * vec4(pl_vnormal, 0.0)));
+	vsShared.tbn = mat3(T, B, N);
+
+	vsShared.normal = N;
+	vsShared.colour = pl_vcolour;
 
 	vec4 UV = pl_texture * vec4(pl_vuv[0], 0.0, 1.0);
 	vsShared.uv = UV.xy / UV.w;
 
+#ifdef LIGHTMAP
 	vsShared.lightmapUV = pl_vuv[1];
+#endif
 
-	vsShared.colour = pl_vcolour;
-
-	#ifdef PSX_SPYRO
+#ifdef PSX_SPYRO
 	vsShared.fadeFactor = PSX_GetDistanceFadeFactor(vsShared.viewPos, vsShared.position, 650.0, 700.0);
-	#endif
+#endif
+
+#ifdef LIGHTING
+	vec3 v = normalize(vsShared.viewPos - vsShared.position);
+	vec3 r = reflect( v, N );
+	float m = 2. * sqrt(pow(r.x, 2.) + pow(r.y, 2.) + pow(r.z, 2.));
+	vsShared.reflect = r.xy / m + .5;
+
+	io_diffuseLighting = diffuse_lighting( lighting.dir, N );
+	io_specularLighting = specular_lighting( v, lighting.dir, N );
+	io_rimLighting = rim_lighting( v, lighting.dir, N );
+#endif
 }

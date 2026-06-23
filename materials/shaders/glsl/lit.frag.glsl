@@ -27,7 +27,7 @@ void main()
 	#ifdef LIGHTING
 	vec4 lightTerm = lighting_term( n, normalize( vsShared.viewPos - vsShared.position ) );
 	#else
-	vec4 lightTerm = sun.ambience;
+	vec4 lightTerm = vec4( 0.0 );
 	#endif
 	vec4 outp = fog_apply( lightTerm * diffuse, vsShared.viewPos, vsShared.position  );
 
