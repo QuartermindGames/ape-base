@@ -18,8 +18,17 @@ array object flares
                 float w     128
                 float h     128
                 float x     128
+                float y     128
+                float scale 10
+                float delta 0.2
+                bool rotate true
+            }
+            {
+                float w     128
+                float h     128
+                float x     128
                 float y     0
-                float delta 0.5
+                float delta 0.8
             }
             {
                 float w     128
