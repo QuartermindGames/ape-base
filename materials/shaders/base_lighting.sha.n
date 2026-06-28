@@ -11,6 +11,7 @@ object program
         object shaderParameters
         {
             string specularMap  materials/shaders/textures/black.png
+            string detailMap    materials/detail/paper_light.tga
             string cloudMap     materials/sky/sky_cloud_cover_00.dds
             string lightMap     %lightmap
         }

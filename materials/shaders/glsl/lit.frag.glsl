@@ -6,20 +6,38 @@
 #include "lighting.inc.glsl"
 #include "fog.inc.glsl"
 
+#define DETAIL
+#define FOG
+
 void main()
 {
-	vec4 diffuse = texture( diffuseMap, vsShared.uv ); //PSX_GetDistanceTextureMip( diffuseMap, vsShared.uv, vsShared.fadeFactor );
+	vec4 diffuse = texture( diffuseMap, vsShared.uv ); //psx_tex_fade_mip( diffuseMap, vsShared.uv, vsShared.fadeFactor );
 #ifdef ALPHATEST
 	if ( diffuse.a < 0.1 )
+	{
 		discard;
+	}
 #endif
 
+	// diffuse
+	vec4 o = diffuse;// * vsShared.colour;
+
 #ifdef LIGHTMAP
+	o.rgb = textureBicubic( lightMap, vsShared.lightmapUV ).rgb * o.rgb;
+#endif
 
-	vec3 light = textureBicubic( lightMap, vsShared.lightmapUV ).rgb;
-	pl_frag = fog_apply( vec4(light, 1.0) * diffuse, vsShared.viewPos, vsShared.position  );
+#ifdef DETAIL
+	vec3 detail = psx_tex_fade_zero( detailMap, vsShared.uv * 2.0, vsShared.fadeFactor );
+	o.rgb = 2.0 * ( o.rgb * detail );
+#endif
 
-#else
+#ifdef FOG
+	o = fog_apply( o, vsShared.viewPos, vsShared.position );
+#endif
+
+	pl_frag = o;
+
+/*#else
 
 	vec3 n = normalize( texture( normalMap, vsShared.uv ).rgb * 2.0 - 1.0 );
 	n = normalize( vsShared.tbn * n );
@@ -33,5 +51,5 @@ void main()
 
 	pl_frag = outp;
 
-#endif
+#endif*/
 }

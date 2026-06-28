@@ -198,7 +198,7 @@ vec3 cubemap_reflect( vec3 pos, vec3 viewPos, vec3 normal )
 /*
  * This is for emulating a Spyro-style fade when surfaces are far enough.
  */
-float PSX_GetDistanceFadeFactor(vec3 viewPos, vec3 worldPos, float fadeStart, float fadeEnd)
+float psx_tex_fade_factor(vec3 viewPos, vec3 worldPos, float fadeStart, float fadeEnd)
 {
 	float dist = distance(viewPos, worldPos);
 	if (dist <= fadeStart)
@@ -216,7 +216,7 @@ float PSX_GetDistanceFadeFactor(vec3 viewPos, vec3 worldPos, float fadeStart, fl
 /*
  * This is for emulating a Spyro-style fade when surfaces are far enough.
  */
-vec4 PSX_GetDistanceTextureMip(sampler2D tex, vec2 texCoord, float fadeFactor)
+vec4 psx_tex_fade_mip(sampler2D tex, vec2 texCoord, float fadeFactor)
 {
 	int maxMip = textureQueryLevels(tex) - 1;
 	if (fadeFactor <= 0.0)
@@ -231,6 +231,25 @@ vec4 PSX_GetDistanceTextureMip(sampler2D tex, vec2 texCoord, float fadeFactor)
 	vec4 srcColour = texture(tex, texCoord);
 	vec4 mipColour = textureLod(tex, texCoord, maxMip);
 	return mix(srcColour, mipColour, fadeFactor);
+}
+
+/**
+ * Same as the above, but fades to zero rather than a mip.
+ */
+vec3 psx_tex_fade_zero( sampler2D tex, vec2 texCoord, float fadeFactor )
+{
+	vec3 srcColour = texture( tex, texCoord ).rgb;
+	vec3 dstColour = vec3( 0.5 );
+	if ( fadeFactor <= 0.0 )
+	{
+		return srcColour;
+	}
+	else if ( fadeFactor >= 1.0 )
+	{
+		return dstColour;
+	}
+
+	return mix( srcColour, dstColour, fadeFactor );
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

@@ -30,7 +30,7 @@ void main()
 #endif
 
 #ifdef PSX_SPYRO
-	vsShared.fadeFactor = PSX_GetDistanceFadeFactor(vsShared.viewPos, vsShared.position, 650.0, 700.0);
+	vsShared.fadeFactor = psx_tex_fade_factor(vsShared.viewPos, vsShared.position, 0.0, 200.0);
 #endif
 
 #ifdef LIGHTING
