@@ -11,7 +11,7 @@ object program
         object shaderParameters
         {
             string specularMap      materials/shaders/textures/black.png
-            float uRimIntensity     1.0
+            float uRimIntensity     0.1
             float uSpecIntensity    4.0
             float uSpecDiffuse      10.0
         }

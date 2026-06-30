@@ -8,7 +8,8 @@
 
 struct Lighting
 {
-	vec4 colour;
+	vec3 ambience;
+	vec3 colour;
 	vec3 dir;
 };
 uniform Lighting lighting;
@@ -16,9 +17,9 @@ uniform Lighting lighting;
 #define SUN
 #define SPECULAR
 
-INOUT vec4 io_rimLighting;
-INOUT vec4 io_diffuseLighting;
-INOUT vec4 io_specularLighting;
+INOUT vec3 io_rimLighting;
+INOUT vec3 io_diffuseLighting;
+INOUT vec3 io_specularLighting;
 
 uniform sampler2D cloudMap;
 
@@ -27,7 +28,7 @@ uniform float uSpecDiffuse = 0.0;
 
 uniform float uRimIntensity = 1.0;
 
-vec4 diffuse_lighting(vec3 lightDir, vec3 normal)
+vec3 diffuse_lighting(vec3 dir, vec3 normal)
 {
 #ifdef CELL_SHADED
 	float i = dot(n, l);
@@ -37,32 +38,32 @@ vec4 diffuse_lighting(vec3 lightDir, vec3 normal)
 	if (i > 0.50) { o += (i / 2); }
 	if (i > 0.25) { o += (i / 2); }
 
-	return vec4( o, o, o, 1.0 );
+	return vec3( o ) * lighting.colour;
 #else
-	return max(dot(normal, lightDir), 0.0) * lighting.colour;
+	return max(dot(normal, dir), 0.0) * lighting.colour;
 #endif
 }
 
-vec4 rim_lighting(vec3 viewDir, vec3 lightDir, vec3 normal)
+vec3 rim_lighting(vec3 view, vec3 dir, vec3 normal)
 {
-	float d = 1.0 - dot(viewDir, normal);
-	float i = smoothstep(0.5, 0.75, d * pow(dot(lightDir, normal), 0.1)) * uRimIntensity;
+	float d = 1.0 - dot(view, normal);
+	float i = smoothstep(0.5, 0.75, d * pow(dot(dir, normal), 0.1)) * uRimIntensity;
 	return i * lighting.colour;
 }
 
-vec4 specular_lighting(vec3 viewDir, vec3 lightDir, vec3 normal)
+vec3 specular_lighting(vec3 view, vec3 dir, vec3 normal)
 {
 #ifdef CELL_SHADED
-	vec3 r = reflect( -lightDir, normal );
-	float i = max( dot( viewDir, r ), 0.0 );
+	vec3 r = reflect( -dir, normal );
+	float i = max( dot( view, r ), 0.0 );
 	if ( i > 0.75 )
 	{
 		return i * lighting.colour;
 	}
 
-	return vec4( 0 );
+	return vec3( 0 );
 #else
-	vec3 h = normalize(lightDir + viewDir);
+	vec3 h = normalize(dir + view);
 	float i = pow(max(dot(h, normal), 0.0), uSpecDiffuse) * uSpecIntensity;
 	return i * lighting.colour;
 #endif
