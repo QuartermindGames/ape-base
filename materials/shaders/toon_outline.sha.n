@@ -1,11 +1,25 @@
 node.utf8
 object program {
 	string description  toon_outline
-	string vertexPath   materials/shaders/glsl/toon_outline.vert.glsl
-	string fragmentPath materials/shaders/glsl/colour.frag.glsl
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/model.frag.glsl
 
-	object defaultPass
-	{
-	    int cullMode 2
-	}
+    object defaultPass
+    {
+        int cullMode 2
+        object shaderParameters
+        {
+            string specularMap      materials/shaders/textures/black.png
+            float uRimIntensity     0.5
+            float uSpecIntensity    4.0
+            float uSpecDiffuse      10.0
+            float u_thickness		0.15
+        }
+    }
+	
+    object definitions
+    {
+        array string fragment { "LIGHTING" }
+        array string vertex { "LIGHTING" THICKNESS }
+    }
 }

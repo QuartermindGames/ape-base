@@ -30,6 +30,8 @@ const float EPSILON = 0.0001;
 uniform double u_numTicks = 0.0;
 uniform vec2 u_viewSize = vec2(640, 480);
 
+uniform float u_thickness = 0.15;
+
 #define PSX_SPYRO
 
 #if PLG_COMPILE_VERTEX == 1

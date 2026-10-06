@@ -5,10 +5,16 @@
 
 void main()
 {
-	gl_ClipDistance[0] = dot(vec4(pl_vposition, 1.0), pl_clipplane);
-	gl_Position = (pl_proj * pl_view * pl_model) * vec4(pl_vposition, 1.0);
+#ifdef THICKNESS
+	vec3 vpos = pl_vposition + ( pl_vnormal * u_thickness );
+#else
+	vec3 vpos = pl_vposition;
+#endif
 
-	vsShared.position = vec3(pl_model * vec4(pl_vposition, 1.0));
+	gl_ClipDistance[0] = dot(vec4(vpos, 1.0), pl_clipplane);
+	gl_Position = (pl_proj * pl_view * pl_model) * vec4(vpos, 1.0);
+
+	vsShared.position = vec3(pl_model * vec4(vpos, 1.0));
 
 	mat4 modelView = pl_view * pl_model;
 	vsShared.viewPos = extract_camera_pos(modelView);
