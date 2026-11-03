@@ -6,12 +6,20 @@
 #include "lighting.inc.glsl"
 #include "fog.inc.glsl"
 
+#ifdef BLEND_3WAY
+#	include "blend_3way.inc.glsl"
+#endif
+
 #define DETAIL
 #define FOG
 
 void main()
 {
+#ifdef BLEND_3WAY
+	vec4 diffuse = blend_samples_3way( u_blendR, u_blendG, u_blendB, vsShared.uv );
+#else
 	vec4 diffuse = texture( diffuseMap, vsShared.uv ); //psx_tex_fade_mip( diffuseMap, vsShared.uv, vsShared.fadeFactor );
+#endif
 #ifdef ALPHATEST
 	if ( diffuse.a < 0.1 )
 	{

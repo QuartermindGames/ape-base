@@ -1,0 +1,24 @@
+node.utf8
+object program
+{
+	string description  shader_lighting_vertex_blend
+	string vertexPath   materials/shaders/glsl/vertex.vert.glsl
+	string fragmentPath materials/shaders/glsl/lit.frag.glsl
+
+    object defaultPass
+    {
+        int cullMode 1
+        object shaderParameters
+        {
+            string specularMap  materials/shaders/textures/black.png
+            string detailMap    materials/detail/paper_light.tga
+            string cloudMap     materials/sky/sky_cloud_cover_00.dds
+            string lightMap     %lightmap
+        }
+    }
+
+    object definitions
+    {
+        array string fragment { "BLEND_3WAY" }
+    }
+}

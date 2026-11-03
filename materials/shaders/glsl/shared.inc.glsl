@@ -187,14 +187,6 @@ vec3 extract_camera_ang(mat4 viewMatrix)
 
 #endif
 
-vec4 blend_samples_3way(sampler2D t0, sampler2D t1, sampler2D t2, vec2 uv)
-{
-	vec4 sampleA = texture(t0, uv);
-	vec4 sampleB = texture(t1, uv);
-	vec4 sampleC = texture(t2, uv);
-	return sampleA * (1 - vsShared.colour.g) + sampleB * vsShared.colour.g;
-}
-
 vec3 cubemap_reflect( vec3 pos, vec3 viewPos, vec3 normal )
 {
 	vec3 i = normalize( pos - viewPos );
