@@ -19,6 +19,7 @@ object program
 
     object definitions
     {
-        array string fragment { "BLEND_3WAY" }
+        array string fragment { "BLEND_3WAY" "LIGHTMAP" }
+        array string vertex { "LIGHTMAP" }
     }
 }
