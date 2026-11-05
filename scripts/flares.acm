@@ -1,9 +1,9 @@
 node.utf8
 array object flares
 {
+    ; 0 - complex flare
     {
         string material "materials/effects/effect_flare_sheet.mat.n"
-
         array object elements
         {
             {
@@ -57,6 +57,21 @@ array object flares
                 float y     0
                 float delta 0.25
                 float scale 0.5
+            }
+        }
+    }
+    ; 1 - simple flare
+    {
+        string material "materials/effects/effect_flare_sheet.mat.n"
+        array object elements
+        {
+            {
+                float w     128
+                float h     128
+                float x     0
+                float y     0
+                float scale 2
+                bool rotate false
             }
         }
     }
